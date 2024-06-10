@@ -3,7 +3,6 @@
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import Image from "next/image";
 
 export const HoverEffect = ({
   items,
@@ -20,7 +19,7 @@ export const HoverEffect = ({
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className={cn("grid grid-cols-1 lg:grid-cols-2  py-10", className)}>
+    <div className={cn("grid grid-cols-1 lg:grid-cols-2 py-5", className)}>
       {items.map((item, idx) => (
         <div
           key={idx}

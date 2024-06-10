@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="z-0">
         <BackgroundBeams />
       </div>
-      <div className="pb-20 pt-10 z-10 relative" id="about">
+      <div className="pt-10 z-10 relative" id="about">
         <div className="flex relative justify-center items-center flex-col w-screens my-20 z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-28 w-full px-4">
             <div className="flex flex-col justify-start w-full">

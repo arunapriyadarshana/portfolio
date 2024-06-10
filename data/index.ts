@@ -41,3 +41,38 @@ export const eduDetails = [
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit.",
   },
 ];
+
+export const projects = [
+  {
+    id: 1,
+    name: "Project 1",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+    link: "",
+    img: "",
+  },
+  {
+    id: 2,
+    name: "Project 2",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+    link: "",
+    img: "",
+  },
+  {
+    id: 3,
+    name: "Project 3",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+    link: "",
+    img: "",
+  },
+  {
+    id: 4,
+    name: "Project 4",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+    link: "",
+    img: "",
+  },
+];
