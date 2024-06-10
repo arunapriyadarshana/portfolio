@@ -6,14 +6,21 @@ import { Button } from "./ui/MovingBorder";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import MagicButton from "./ui/MagicButton";
 import { HoverEffect } from "./ui/HoverCard";
-import { eduDetails, myAccount } from "@/data";
+import {
+  backEnd,
+  databases,
+  eduDetails,
+  frontEnd,
+  myAccount,
+  programmingLanguages,
+} from "@/data";
 import ShimmerButton from "./ui/ShimmerButton";
 import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div>
-      <div className="z-0">
+    <div className="relative">
+      <div className="z-0 absolute w-screen h-screen">
         <BackgroundBeams />
       </div>
       <div className="pt-10 z-10 relative" id="about">
@@ -70,13 +77,13 @@ const Hero = () => {
             <h1 className="heading mb-5">
               About <span className="text-purple">me</span>
             </h1>
-            <p className="text-center text-base font-normal">
+            <p className="text-center text-base font-normal w-full px-2 md:px-20">
               I am an IT undergraduate at the University of Moratuwa with a GPA
               of 3.79. I enjoy solving problems and developing web applications.
-              I have experience with Java, Python, JavaScript, React, and
-              Node.js, as well as database management. I am a team player with
-              strong time management skills, and I am always eager to learn and
-              take on new challenges.
+              I have experience with Java, Python, JavaScript, TypeScrpt,
+              React.js, Nextjs and Node.js, as well as database management. I am
+              a team player with strong time management skills, and I am always
+              eager to learn and take on new challenges.
             </p>
             <div className="flex flex-row justify-center items-center gap-5 my-6">
               {myAccount.map(({ id, image, name, link }) => (
@@ -90,6 +97,91 @@ const Hero = () => {
             <h1 className="text-3xl font-bold">Educations</h1>
             <div className="flex flex-wrap justify-center items-center">
               <HoverEffect items={eduDetails} />
+            </div>
+          </div>
+          <div className="mt-5 flex flex-col items-center justify-center">
+            <h1 className="text-3xl font-bold">Technologies</h1>
+            <div className="grid grid-rows-4 gap-5 mt-3">
+              <div className="flex flex-col">
+                <h1 className="text-2xl font-bold">Front-End Development</h1>
+                <div className="flex flex-wrap gap-5 py-4">
+                  {frontEnd.map(({ id, title, img }) => (
+                    <div
+                      key={id}
+                      className="flex flex-row items-center justify-center gap-3"
+                    >
+                      <Image
+                        src={img}
+                        alt={title}
+                        width={30}
+                        height={30}
+                        className="rounded-sm"
+                      />
+                      <p className="font-semibold text-lg">{title}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-2xl font-bold">Back-End Development</h1>
+                <div className="flex flex-wrap gap:3 md:gap-5 py-4">
+                  {backEnd.map(({ id, title, img }) => (
+                    <div
+                      key={id}
+                      className="flex flex-row items-center justify-center gap-3"
+                    >
+                      <Image
+                        src={img}
+                        alt={title}
+                        width={30}
+                        height={30}
+                        className="rounded-sm"
+                      />
+                      <p className="font-semibold text-lg">{title}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-2xl font-bold">Databases</h1>
+                <div className="flex flex-wrap gap-5 py-4">
+                  {databases.map(({ id, title, img }) => (
+                    <div
+                      key={id}
+                      className="flex flex-row items-center justify-center gap-3"
+                    >
+                      <Image
+                        src={img}
+                        alt={title}
+                        width={30}
+                        height={30}
+                        className="rounded-sm"
+                      />
+                      <p className="font-semibold text-lg">{title}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-2xl font-bold">Programming Languages</h1>
+                <div className="flex flex-wrap gap-5 pt-4">
+                  {programmingLanguages.map(({ id, title, img }) => (
+                    <div
+                      key={id}
+                      className="flex flex-row items-center justify-center gap-3"
+                    >
+                      <Image
+                        src={img}
+                        alt={title}
+                        width={30}
+                        height={30}
+                        className="rounded-sm"
+                      />
+                      <p className="font-semibold text-lg">{title}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
