@@ -1,11 +1,11 @@
 import { BackgroundBeams } from "./ui/BackgroundBeam";
 import { TypewriterEffect } from "./ui/TypeWritterEffext";
 import Image from "next/image";
-import profileImg from "../public/myImg.png";
-import { Button } from "./ui/MovingBorder";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import ProfilePhoto from "./ui/ProfilePhoto";
 import MagicButton from "./ui/MagicButton";
 import { HoverEffect } from "./ui/HoverCard";
+
 import {
   backEnd,
   databases,
@@ -23,19 +23,19 @@ const Hero = () => {
       <div className="z-0 absolute w-screen h-screen">
         <BackgroundBeams />
       </div>
-      <div className="pt-10 z-10 relative" id="about">
-        <div className="flex relative justify-center items-center flex-col w-screens my-20 z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-28 w-full px-4">
+      <div className="pt-5 md:pt-28 lg:pt-36 z-10 relative" id="about">
+        <div className="flex relative justify-center items-center flex-col w-screens my-20 py-5 md:py-10 z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-28 w-full px-4">
             <div className="flex flex-col justify-start w-full">
               <TypewriterEffect
                 words={[
                   {
                     text: "Aruna ",
-                    className: "text-3xl md:text-4xl lg:text-6xl",
+                    className: "text-[25px] md:text-4xl lg:text-6xl",
                   },
                   {
                     text: "Priyadarshana",
-                    className: "text-3xl md:text-4xl lg:text-6xl",
+                    className: "text-[25px] md:text-4xl lg:text-6xl",
                   },
                 ]}
               />
@@ -52,15 +52,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="w-full flex flex-col items-center justify-center">
-              <Button>
-                <Image
-                  src={profileImg}
-                  alt="Aruna Priyadarshana"
-                  width={300}
-                  height={300}
-                  className="pt-5"
-                />
-              </Button>
+              <ProfilePhoto />
               <div className="sm:hidden felx mt-10">
                 <MagicButton
                   title="Download Resume"
@@ -71,10 +63,9 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div></div>
-        <div className="mx-2 my-7">
+        <div className="mx-2 my-10">
           <div>
-            <h1 className="heading mb-5">
+            <h1 className="heading my-5">
               About <span className="text-purple">me</span>
             </h1>
             <p className="text-center text-base font-normal w-full px-2 md:px-20">
