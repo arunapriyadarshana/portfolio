@@ -29,7 +29,7 @@ const Hero = () => {
               className="text-xl md:text-3xl"
             />
           </div>
-          <div className="w-full">
+          <div className="w-full flex flex-col items-center justify-center">
             <Button>
               <Image
                 src={profileImg}
