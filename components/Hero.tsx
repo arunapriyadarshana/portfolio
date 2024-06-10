@@ -44,21 +44,13 @@ const Hero = () => {
                 className="text-xl md:text-3xl"
               />
               <div className="sm:flex hidden">
-                <MagicButton
-                  title="Download Resume"
-                  position="left"
-                  icon={""}
-                />
+                <MagicButton title="Download Resume" />
               </div>
             </div>
             <div className="w-full flex flex-col items-center justify-center">
               <ProfilePhoto />
               <div className="sm:hidden felx mt-10">
-                <MagicButton
-                  title="Download Resume"
-                  position="left"
-                  icon={""}
-                />
+                <MagicButton title="Download Resume" />
               </div>
             </div>
           </div>
