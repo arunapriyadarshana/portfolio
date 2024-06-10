@@ -41,11 +41,12 @@ const Hero = () => {
             About <span className="text-purple">me</span>
           </h1>
           <p className="text-center">
-            I am a Full Stack Developer with 3 years of experience in developing
-            web applications. I am passionate about building scalable and
-            maintainable applications. I have experience in working with
-            technologies like React, Node, Express, MongoDB, PostgreSQL, and
-            AWS.
+            I am an IT undergraduate at the University of Moratuwa with a GPA of
+            3.79. I enjoy solving problems and developing web applications. I
+            have experience with Java, Python, JavaScript, React, and Node.js,
+            as well as database management. I am a team player with strong time
+            management skills, and I am always eager to learn and take on new
+            challenges.
           </p>
         </div>
       </div>
