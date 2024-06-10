@@ -10,7 +10,6 @@ export const HoverEffect = ({
   className,
 }: {
   items: {
-    img: string;
     name: string;
     time: string;
     title: string;
@@ -47,7 +46,6 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card
-            img={item.img}
             name={item.name}
             time={item.time}
             title={item.title}
@@ -62,14 +60,12 @@ export const HoverEffect = ({
 
 export const Card = ({
   className,
-  img,
   time,
   title,
   name,
   desciption,
 }: {
   className?: string;
-  img: string;
   time: string;
   title: string;
   name: string;
@@ -78,9 +74,14 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full md:w-[30rem] p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full md:w-[30rem] p-4 overflow-hidden border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
         className
       )}
+      style={{
+        background: "rgb(4,7,29)",
+        backgroundColor:
+          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+      }}
     >
       <div className="relative z-50">
         <div className="flex flex-col ">
