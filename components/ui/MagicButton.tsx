@@ -10,7 +10,7 @@ const MagicButton = ({
 }) => {
   const handleClick = () => {
     const link = document.createElement("a");
-    link.href = "/cv.pdf";
+    link.href = "/Aruna_Priyadarshana_Resume.pdf";
     link.download = "Aruna_Priyadarshana_Resume.pdf";
     document.body.appendChild(link);
     link.click();
