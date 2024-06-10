@@ -8,15 +8,20 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-10 ">
-      <div className="flex items-center justify-center absolute top-10 left-0 w-full h-full"></div>
-      <div className="flex relative justify-center items-center flex-col my-20 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-28">
+    <div className="pb-20 pt-10 " id="about">
+      <div className="flex relative justify-center items-center flex-col w-screens my-20 z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-28 w-full px-4">
           <div className="flex flex-col justify-start w-full">
             <TypewriterEffect
               words={[
-                { text: "Aruna ", className: "text-3xl md:text-6xl" },
-                { text: "Priyadarshana", className: "text-3xl md:text-6xl" },
+                {
+                  text: "Aruna ",
+                  className: "text-3xl md:text-4xl lg:text-6xl",
+                },
+                {
+                  text: "Priyadarshana",
+                  className: "text-3xl md:text-4xl lg:text-6xl",
+                },
               ]}
             />
             <TextGenerateEffect
@@ -24,7 +29,7 @@ const Hero = () => {
               className="text-xl md:text-3xl"
             />
           </div>
-          <div>
+          <div className="w-full">
             <Button>
               <Image
                 src={profileImg}
