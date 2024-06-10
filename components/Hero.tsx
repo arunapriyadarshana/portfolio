@@ -15,13 +15,13 @@ const Hero = () => {
           <div className="flex flex-col justify-start w-full">
             <TypewriterEffect
               words={[
-                { text: "Aruna ", className: "text-2xl md:text-3xl" },
-                { text: "Priyadarshana", className: "text-2xl md:text-3xl" },
+                { text: "Aruna ", className: "text-3xl md:text-6xl" },
+                { text: "Priyadarshana", className: "text-3xl md:text-6xl" },
               ]}
             />
             <TextGenerateEffect
               words="I am a full-stack developer."
-              className=""
+              className="text-xl md:text-3xl"
             />
           </div>
           <div>
