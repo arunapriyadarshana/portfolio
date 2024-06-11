@@ -12,12 +12,14 @@ import MagicButton from "./ui/MagicButton";
 import { HoverEffect } from "./ui/HoverCard";
 
 import {
+  aboutMe,
   backEnd,
   databases,
   eduDetails,
   frontEnd,
   myAccount,
   programmingLanguages,
+  wordsArr,
 } from "@/data";
 import ShimmerButton from "./ui/ShimmerButton";
 import Link from "next/link";
@@ -58,7 +60,8 @@ const Hero = () => {
                 ]}
               />
               <TextGenerateEffect
-                words="I am a full-stack developer."
+                words="I am a "
+                wordsArr={wordsArr}
                 className="text-xl md:text-3xl"
               />
               <div className="md:flex hidden">
@@ -99,12 +102,7 @@ const Hero = () => {
               About <span className="text-purple">me</span>
             </h1>
             <p className="text-center text-base font-normal w-full px-2 md:px-20">
-              I am an IT undergraduate at the University of Moratuwa with a GPA
-              of 3.79. I enjoy solving problems and developing web applications.
-              I have experience with Java, Python, JavaScript, TypeScrpt,
-              React.js, Nextjs and Node.js, as well as database management. I am
-              a team player with strong time management skills, and I am always
-              eager to learn and take on new challenges.
+              {aboutMe}
             </p>
             <div className="flex flex-row justify-center items-center gap-5 my-6">
               {myAccount.map(({ id, image, name, link }) => (

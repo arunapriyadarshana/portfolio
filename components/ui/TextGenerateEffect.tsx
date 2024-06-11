@@ -1,13 +1,16 @@
 "use client";
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
+import { FlipWords } from "./FlipWords";
 import { cn } from "@/utils/cn";
 
 export const TextGenerateEffect = ({
   words,
+  wordsArr,
   className,
 }: {
   words: string;
+  wordsArr: string[];
   className?: string;
 }) => {
   const [scope, animate] = useAnimate();
@@ -40,6 +43,7 @@ export const TextGenerateEffect = ({
             </motion.span>
           );
         })}
+        <FlipWords words={wordsArr} className="text-purple absolute" />
       </motion.div>
     );
   };
@@ -47,7 +51,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)}>
       <div className="my-4">
-        <div className=" dark:text-white text-black  leading-snug tracking-wide">
+        <div className=" dark:text-white text-black leading-snug tracking-wide">
           {renderWords()}
         </div>
       </div>

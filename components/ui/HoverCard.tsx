@@ -13,6 +13,7 @@ export const HoverEffect = ({
     time: string;
     title: string;
     description: string;
+    other?: string;
   }[];
   className?: string;
 }) => {
@@ -49,6 +50,7 @@ export const HoverEffect = ({
             time={item.time}
             title={item.title}
             desciption={item.description}
+            other={item.other}
             className="col-span-2"
           />
         </div>
@@ -63,12 +65,14 @@ export const Card = ({
   title,
   name,
   desciption,
+  other,
 }: {
   className?: string;
   time: string;
   title: string;
   name: string;
   desciption: string;
+  other?: string;
 }) => {
   return (
     <div
@@ -98,7 +102,10 @@ export const Card = ({
             {time}
           </h4>
           <h4
-            className={cn("text-zinc-300 font-bold tracking-wide ", className)}
+            className={cn(
+              "text-zinc-300 text-sm font-bold tracking-wide ",
+              className
+            )}
           >
             {name}
           </h4>
@@ -110,6 +117,11 @@ export const Card = ({
           >
             {desciption}
           </p>
+          <h4
+            className={cn("text-zinc-100 font-bold tracking-wide ", className)}
+          >
+            {other}
+          </h4>
         </div>
       </div>
     </div>

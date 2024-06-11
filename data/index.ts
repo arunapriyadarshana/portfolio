@@ -1,10 +1,17 @@
-import { title } from "process";
-
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
   { name: "Contact", link: "#contact" },
 ];
+
+export const wordsArr = [
+  "Front-End Developer",
+  "Back-End Developer",
+  "Problem Solver",
+];
+
+export const aboutMe =
+  "I am an IT undergraduate at the University of Moratuwa with a GPA of 3.79. I enjoy solving problems and developing web applications. I have experience with Java, Python, JavaScript, TypeScrpt, React.js, Nextjs and Node.js, as well as database management. I am a team player with strong time management skills, and I am always eager to learn and take on new challenges.";
 
 export const myAccount = [
   {
@@ -33,14 +40,16 @@ export const eduDetails = [
     time: "Expected in 2026",
     name: "BScHons in Information Technology",
     description:
-      "loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+      " I am an undergraduate at the University of Moratuwa, pursuing a BSc (Hons) in Information Technology. I am in my third year and have already completed coursework that includes Data Structures and Algorithms (DSA), Object-Oriented Programming (OOP), Database Management Systems (DBMS), and many more.",
+    other: "GPA: 3.78 / 4.0",
   },
   {
     title: "St. Anne's Collage, Kurunegala",
     time: "2012 - 2020",
     name: "GCE A/L in Physical Science Stream",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. loreum ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit.",
+      "In 2020, I completed the GCE Advanced Level in the Physical Science stream with a Z-score of 1.6. I achieved an 'A' in Combined Mathematics and two 'B's in Physics and Chemistry.",
+    other: "",
   },
 ];
 
@@ -133,11 +142,11 @@ export const programmingLanguages = [
 
 export const projects = [
   {
-    id: 1,
+    id: 4,
     title: "E-commerce Website",
     subTitle: "",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+      "We are currently developing an e-commerce website using React, Node.js, MySQL, and TailwindCSS. This platform will allow users to browse products, add items to their cart, and complete purchases seamlessly. The project involves collaborative teamwork aimed at creating a user-friendly and efficient online store.",
     gitlink: "",
     img: "/test.jpeg",
     stack: [
@@ -149,21 +158,21 @@ export const projects = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "Portfolio Website",
     subTitle: "",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+      "I am building my portfolio website using Next.js and TailwindCSS. This site will showcase my projects, skills, and experience in a user-friendly and visually appealing manner.",
     gitlink: "https://github.com/arunapriyadarshana/portfolio",
     img: "/test.jpeg",
     stack: ["/nextjs.svg", "/sentryio.svg", "/tailwind.svg"],
   },
   {
-    id: 3,
+    id: 2,
     title: "Holiday Home Booking System",
     subTitle: "2nd Year Software Project",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+      "For our second-year group project, we developed a holiday home booking system using React, Node.js, Oracle DB with TypeORM, and Material UI. This system allows users to browse available holiday homes, add reservations, and manage their bookings. Additionally, administrators have access to view detailed information and manage reservations. ",
     gitlink: "",
     img: "/test.jpeg",
     stack: [
@@ -175,11 +184,11 @@ export const projects = [
     ],
   },
   {
-    id: 4,
+    id: 1,
     title: "Automated Watering System",
     subTitle: "1st Year Hardware Project",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, varius velit. ",
+      "Our first-year hardware project involved creating an automated watering system. We utilized an ESP32 module, Arduino IoT Cloud, and Arduino components. The system automatically activates when the soil moisture level drops below a certain threshold, ensuring optimal plant hydration. Additionally, owners can conveniently control watering schedules either through a physical controller or the Arduino app, offering flexibility and ease of use",
     gitlink: "",
     img: "/test.jpeg",
     stack: ["/arduino.svg"],
