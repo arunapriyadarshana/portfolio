@@ -14,8 +14,14 @@ export const FlipWords = ({
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [startAnim, setStartAnim] = useState<boolean>(false);
 
-  // thanks for the fix Julian - https://github.com/Julian-AT
+  useEffect(() => {
+    setTimeout(() => {
+      setStartAnim(true);
+    }, 5000);
+  }, []);
+
   const startAnimation = useCallback(() => {
     const word = words[words.indexOf(currentWord) + 1] || words[0];
     setCurrentWord(word);
@@ -23,11 +29,11 @@ export const FlipWords = ({
   }, [currentWord, words]);
 
   useEffect(() => {
-    if (!isAnimating)
+    if (!isAnimating && startAnim)
       setTimeout(() => {
         startAnimation();
       }, duration);
-  }, [isAnimating, duration, startAnimation]);
+  }, [isAnimating, startAnim, duration, startAnimation]);
 
   return (
     <AnimatePresence
