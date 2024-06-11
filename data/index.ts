@@ -164,7 +164,7 @@ export const projects = [
     description:
       "I am building my portfolio website using Next.js and TailwindCSS. This site will showcase my projects, skills, and experience in a user-friendly and visually appealing manner.",
     gitlink: "https://github.com/arunapriyadarshana/portfolio",
-    img: "/test.jpeg",
+    img: "/portfolio.jpg",
     stack: ["/nextjs.svg", "/sentryio.svg", "/tailwind.svg"],
   },
   {
@@ -190,7 +190,7 @@ export const projects = [
     description:
       "Our first-year hardware project involved creating an automated watering system. We utilized an ESP32 module, Arduino IoT Cloud, and Arduino components. The system automatically activates when the soil moisture level drops below a certain threshold, ensuring optimal plant hydration. Additionally, owners can conveniently control watering schedules either through a physical controller or the Arduino app, offering flexibility and ease of use",
     gitlink: "",
-    img: "/test.jpeg",
+    img: "/hwproject.jpg",
     stack: ["/arduino.svg"],
   },
 ];

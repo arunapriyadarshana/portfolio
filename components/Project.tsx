@@ -17,7 +17,7 @@ const Project = () => {
     <div className="relative pt-2 pb-5" id="projects">
       <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
         <h1 className="heading">
-          My <span className="text-purple">projects</span>
+          My <span className="text-purple">works</span>
         </h1>
       </div>
       <div className="flex flex-wrap justify-center items-start gap-6 py-6">
@@ -28,7 +28,13 @@ const Project = () => {
                 <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-md blur-3xl" />
                 <div className="relative shadow-xl bg-gray-900 border border-gray-800  px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start">
                   <div className="z-10 w-full h-full overflow-hidden  bg-[#13162d] mb-4">
-                    <Image src={img} alt={title} width={400} height={400} />
+                    <Image
+                      src={img}
+                      alt={title}
+                      width={400}
+                      height={400}
+                      className="rounded-sm"
+                    />
                   </div>
                   <h1 className="font-bold text-xl text-white  relative z-50">
                     {title}
