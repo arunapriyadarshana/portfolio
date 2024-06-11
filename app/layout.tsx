@@ -19,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <link rel="icon" href="/logo2.png" />
+        <link rel="apple-touch-icon" href="/logo2.png" />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
