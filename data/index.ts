@@ -174,7 +174,7 @@ export const projects = [
     description:
       "For our second-year group project, we developed a holiday home booking system using React, Node.js, Oracle DB with TypeORM, and Material UI. This system allows users to browse available holiday homes, add reservations, and manage their bookings. Additionally, administrators have access to view detailed information and manage reservations. ",
     gitlink: "",
-    img: "/test.jpeg",
+    img: "/hhbookingsystem.jpg",
     stack: [
       "/reactjs.svg",
       "/nodejs.svg",
