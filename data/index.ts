@@ -162,7 +162,7 @@ export const projects = [
     title: "Portfolio Website",
     subTitle: "",
     description:
-      "I am building my portfolio website using Next.js and TailwindCSS. This site will showcase my projects, skills, and experience in a user-friendly and visually appealing manner.",
+      "I am building my portfolio website using Next.js and TailwindCSS. This site will showcase my personal details, skills, and my works in a user-friendly and visually appealing manner.",
     gitlink: "https://github.com/arunapriyadarshana/portfolio",
     img: "/portfolio.jpg",
     stack: ["/nextjs.svg", "/sentryio.svg", "/tailwind.svg"],
