@@ -148,7 +148,7 @@ export const projects = [
     description:
       "We are currently developing an e-commerce website using React, Node.js, MySQL, and TailwindCSS. This platform will allow users to browse products, add items to their cart, and complete purchases seamlessly. The project involves collaborative teamwork aimed at creating a user-friendly and efficient online store.",
     gitlink: "",
-    img: "/test.jpeg",
+    img: "/ecompramuka.jpg",
     stack: [
       "/reactjs.svg",
       "/nodejs.svg",
