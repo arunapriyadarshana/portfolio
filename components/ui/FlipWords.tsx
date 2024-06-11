@@ -19,7 +19,7 @@ export const FlipWords = ({
   useEffect(() => {
     setTimeout(() => {
       setStartAnim(true);
-    }, 5000);
+    }, 3000);
   }, []);
 
   const startAnimation = useCallback(() => {
