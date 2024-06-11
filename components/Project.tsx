@@ -1,18 +1,29 @@
+"use client";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { projects } from "@/data";
 import Image from "next/image";
 import { Meteors } from "./ui/Meteors";
 import { FaLocationArrow } from "react-icons/fa6";
 
 const Project = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
   return (
     <div className="relative pt-2 pb-5" id="projects">
-      <h1 className="heading">
-        My <span className="text-purple">projects</span>
-      </h1>
+      <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+        <h1 className="heading">
+          My <span className="text-purple">projects</span>
+        </h1>
+      </div>
       <div className="flex flex-wrap justify-center items-start gap-6 py-6">
         {projects.map(
           ({ id, title, subTitle, description, gitlink, img, stack }) => (
-            <div key={id}>
+            <div key={id} data-aos="zoom-out-up">
               <div className=" w-full relative max-w-sm">
                 <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-md blur-3xl" />
                 <div className="relative shadow-xl bg-gray-900 border border-gray-800  px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start">

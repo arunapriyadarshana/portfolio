@@ -185,3 +185,21 @@ export const projects = [
     stack: ["/arduino.svg"],
   },
 ];
+
+export const socialMedia = [
+  {
+    id: 1,
+    icon: "/facebook.svg",
+    link: "https://www.facebook.com/aruna.priyadarshana.716195?mibextid=ZbWKwL",
+  },
+  {
+    id: 2,
+    icon: "/instagram.svg",
+    link: "https://www.instagram.com/aruna_priyadarshana_?igsh=NGx4aGpiY2xja2lx",
+  },
+  {
+    id: 3,
+    icon: "/linkedin2.svg",
+    link: "https://www.linkedin.com/in/aruna-priyadarshana-243060228/",
+  },
+];
