@@ -41,7 +41,7 @@ export const eduDetails = [
     name: "BScHons in Information Technology",
     description:
       " I am an undergraduate at the University of Moratuwa, pursuing a BSc (Hons) in Information Technology. I am in my third year and have already completed coursework that includes Data Structures and Algorithms (DSA), Object-Oriented Programming (OOP), Database Management Systems (DBMS), and many more.",
-    other: "GPA: 3.78 / 4.0",
+    other: "CGPA: 3.79 / 4.0",
   },
   {
     title: "St. Anne's Collage, Kurunegala",
