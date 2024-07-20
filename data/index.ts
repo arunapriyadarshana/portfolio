@@ -65,14 +65,24 @@ export const frontEnd = [
     img: "/reactjs.svg",
   },
   {
+    id: 4,
+    title: "Material UI",
+    img: "/materialui.svg",
+  },
+  {
     id: 3,
     title: "Tailwind CSS",
     img: "/tailwind.svg",
   },
   {
-    id: 4,
-    title: "Material UI",
-    img: "/materialui.svg",
+    id: 7,
+    title: "Flowbite React UI",
+    img: "/flowbite.png",
+  },
+  {
+    id: 8,
+    title: "Shadcn UI",
+    img: "/shadcn.svg",
   },
   {
     id: 5,
@@ -154,6 +164,7 @@ export const projects = [
       "/nodejs.svg",
       "/mysql.svg",
       "/prisma.svg",
+      "/flowbite.png",
       "/tailwind.svg",
     ],
   },
