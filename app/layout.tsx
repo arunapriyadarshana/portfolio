@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +18,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleAnalytics />
+      <head />
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZD6XXR338Z"
+      ></Script>
+      <Script id="google-analytics">
+        {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZD6XXR338Z');`}
+      </Script>
       <body className={inter.className}>
         <link rel="icon" href="/logo2.png" />
         <link rel="apple-touch-icon" href="/logo2.png" />
