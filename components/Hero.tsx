@@ -30,12 +30,16 @@ const Hero = () => {
       duration: 1000,
     });
   }, []);
+  const event = ({ action }: any) => {
+    (window as any).gtag("event", action);
+  };
   const handleClick = () => {
     const link = document.createElement("a");
     link.href = "/Aruna_Priyadarshana_Resume.pdf";
     link.download = "Aruna_Priyadarshana_Resume.pdf";
     document.body.appendChild(link);
     link.click();
+    event({ action: "download_cv" });
     document.body.removeChild(link);
   };
   return (
