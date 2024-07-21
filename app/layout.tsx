@@ -21,14 +21,14 @@ export default function RootLayout({
       <head />
       <Script
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=${"${process.env.NEXT_PUBLIC_MEASUREMENT_ID}"}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_MEASUREMENT_ID}`}
       ></Script>
       <Script id="google-analytics">
         {`window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-  gtag('config', ${"${process.env.NEXT_PUBLIC_MEASUREMENT_ID}"});`}
+          gtag('config', ${process.env.NEXT_PUBLIC_MEASUREMENT_ID});`}
       </Script>
       <body className={inter.className}>
         <link rel="icon" href="/logo2.png" />
