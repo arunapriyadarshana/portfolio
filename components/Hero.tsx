@@ -10,7 +10,7 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import ProfilePhoto from "./ui/ProfilePhoto";
 import MagicButton from "./ui/MagicButton";
 import { HoverEffect } from "./ui/HoverCard";
-
+import ReactGA from "react-ga";
 import {
   aboutMe,
   backEnd,
@@ -30,16 +30,17 @@ const Hero = () => {
       duration: 1000,
     });
   }, []);
-  const event = ({ action }: any) => {
-    (window as any).gtag("event", action);
-  };
+
   const handleClick = () => {
+    ReactGA.event({
+      category: "Download Resume",
+      action: "Downloaded Resume",
+    });
     const link = document.createElement("a");
     link.href = "/Aruna_Priyadarshana_Resume.pdf";
     link.download = "Aruna_Priyadarshana_Resume.pdf";
     document.body.appendChild(link);
     link.click();
-    event({ action: "download_cv" });
     document.body.removeChild(link);
   };
   return (
