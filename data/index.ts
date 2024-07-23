@@ -234,12 +234,12 @@ export const projects = [
       {
         id: 1,
         name: "View Frontend Source Code",
-        url: "",
+        url: "https://github.com/Team-DeltaX/homly-frontend.git",
       },
       {
         id: 2,
         name: "View Backend Source Code",
-        url: "",
+        url: "https://github.com/Team-DeltaX/homly-backend.git",
       },
     ],
     img: "/hhbookingsystem.jpg",
