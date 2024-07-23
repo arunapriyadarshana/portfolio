@@ -6,6 +6,7 @@ import { projects } from "@/data";
 import Image from "next/image";
 import { Meteors } from "./ui/Meteors";
 import { FaLocationArrow } from "react-icons/fa6";
+import { AnimatedTooltip } from "./ui/AnimatedTooltip";
 
 const Project = () => {
   useEffect(() => {
@@ -13,6 +14,7 @@ const Project = () => {
       duration: 1000,
     });
   }, []);
+
   return (
     <div className="relative pt-2 pb-5" id="projects">
       <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
@@ -22,7 +24,7 @@ const Project = () => {
       </div>
       <div className="flex flex-wrap justify-center items-start gap-6 py-6">
         {projects.map(
-          ({ id, title, subTitle, description, gitlink, img, stack }) => (
+          ({ id, title, subTitle, description, links, img, stack }) => (
             <div key={id} data-aos="zoom-out-up">
               <div className=" w-full relative max-w-sm">
                 <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-md blur-3xl" />
@@ -47,28 +49,36 @@ const Project = () => {
                     {description}
                   </p>
 
-                  <div className="flex flex-row w-full items-baseline justify-between mt-7 mb-3 z-50">
-                    <div className="flex items-center">
-                      {stack.map((item, index) => (
-                        <div
-                          key={index}
-                          className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                          style={{ transform: `translateX(-${index * 5}px)` }}
-                        >
-                          <Image src={item} alt="" width={30} height={30} />
-                        </div>
-                      ))}
+                  <div className="flex flex-wrap  w-full  justify-between mt-4 gap-5 z-50">
+                    <div className="flex">
+                      <AnimatedTooltip items={stack} />
                     </div>
-                    {gitlink && (
-                      <a href={gitlink} target="_blank" rel="noreferrer">
-                        <div className="flex justify-center items-center">
-                          <p className="lg:text-sm text-xs text-purple">
-                            View on GitHub
-                          </p>
-                          <FaLocationArrow className="ms-3" color="#cbacf9" />
-                        </div>
-                      </a>
-                    )}
+                    <div className="flex flex-col items-end min-w-44 max-w-full space-y-1 ">
+                      {links &&
+                        links.map(({ id, name, url }) => (
+                          <a
+                            href={url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="cursor-pointer"
+                            key={id}
+                            onClick={() =>
+                              (window as any).gtag("event", "click", {
+                                event_category: "project",
+                                event_label: name,
+                                value: id,
+                              })
+                            }
+                          >
+                            <div className="flex flex-row gap-3">
+                              <p className="lg:text-sm text-xs truncate max-w-36 text-purple">
+                                {name}
+                              </p>
+                              <FaLocationArrow color="#cbacf9" />
+                            </div>
+                          </a>
+                        ))}
+                    </div>
                   </div>
 
                   <Meteors number={20} />

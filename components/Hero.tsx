@@ -10,7 +10,6 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import ProfilePhoto from "./ui/ProfilePhoto";
 import MagicButton from "./ui/MagicButton";
 import { HoverEffect } from "./ui/HoverCard";
-import ReactGA from "react-ga";
 import {
   aboutMe,
   backEnd,
@@ -32,9 +31,9 @@ const Hero = () => {
   }, []);
 
   const handleClick = () => {
-    ReactGA.event({
-      category: "Download Resume",
-      action: "Downloaded Resume",
+    (window as any).gtag("event", "download", {
+      event_category: "Resume",
+      event_label: "Downloaded Resume",
     });
     const link = document.createElement("a");
     link.href = "/Aruna_Priyadarshana_Resume.pdf";
