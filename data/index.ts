@@ -157,15 +157,39 @@ export const projects = [
     subTitle: "",
     description:
       "We are currently developing an e-commerce website using React, Node.js, MySQL, and TailwindCSS. This platform will allow users to browse products, add items to their cart, and complete purchases seamlessly. The project involves collaborative teamwork aimed at creating a user-friendly and efficient online store.",
-    gitlink: "",
+    links: [],
     img: "/ecompramuka.jpg",
     stack: [
-      "/reactjs.svg",
-      "/nodejs.svg",
-      "/mysql.svg",
-      "/prisma.svg",
-      "/flowbite.png",
-      "/tailwind.svg",
+      {
+        id: 1,
+        name: "React.js",
+        image: "/reactjs.svg",
+      },
+      {
+        id: 2,
+        name: "Node.js",
+        image: "/nodejs.svg",
+      },
+      {
+        id: 3,
+        name: "MySQL",
+        image: "/mysql.svg",
+      },
+      {
+        id: 4,
+        name: "Prisma",
+        image: "/prisma.svg",
+      },
+      {
+        id: 5,
+        name: "Flowbite React UI",
+        image: "/flowbite.png",
+      },
+      {
+        id: 6,
+        name: "Tailwind CSS",
+        image: "/tailwind.svg",
+      },
     ],
   },
   {
@@ -174,9 +198,31 @@ export const projects = [
     subTitle: "",
     description:
       "I am building my portfolio website using Next.js and TailwindCSS. This site will showcase my personal details, skills, and my works in a user-friendly and visually appealing manner.",
-    gitlink: "https://github.com/arunapriyadarshana/portfolio",
+    links: [
+      {
+        id: 1,
+        name: "View Source Code",
+        url: "https://github.com/arunapriyadarshana/portfolio",
+      },
+    ],
     img: "/portfolio.jpg",
-    stack: ["/nextjs.svg", "/sentryio.svg", "/tailwind.svg"],
+    stack: [
+      {
+        id: 1,
+        name: "Next.js",
+        image: "/nextjs.svg",
+      },
+      {
+        id: 2,
+        name: "Sentry.io",
+        image: "/sentryio.svg",
+      },
+      {
+        id: 3,
+        name: "Tailwind CSS",
+        image: "/tailwind.svg",
+      },
+    ],
   },
   {
     id: 2,
@@ -184,14 +230,45 @@ export const projects = [
     subTitle: "2nd Year Software Project",
     description:
       "For our second-year group project, we developed a holiday home booking system using React, Node.js, Oracle DB with TypeORM, and Material UI. This system allows users to browse available holiday homes, add reservations, and manage their bookings. Additionally, administrators have access to view detailed information and manage reservations. ",
-    gitlink: "",
+    links: [
+      {
+        id: 1,
+        name: "View Frontend Source Code",
+        url: "",
+      },
+      {
+        id: 2,
+        name: "View Backend Source Code",
+        url: "",
+      },
+    ],
     img: "/hhbookingsystem.jpg",
     stack: [
-      "/reactjs.svg",
-      "/nodejs.svg",
-      "/orcleDb.png",
-      "/typeorm.svg",
-      "/materialui.svg",
+      {
+        id: 1,
+        name: "React.js",
+        image: "/reactjs.svg",
+      },
+      {
+        id: 2,
+        name: "Node.js",
+        image: "/nodejs.svg",
+      },
+      {
+        id: 3,
+        name: "Oracle DB",
+        image: "/orcleDb.png",
+      },
+      {
+        id: 4,
+        name: "TypeORM",
+        image: "/typeorm.svg",
+      },
+      {
+        id: 5,
+        name: "Material UI",
+        image: "/materialui.svg",
+      },
     ],
   },
   {
@@ -202,7 +279,13 @@ export const projects = [
       "Our first-year hardware project involved creating an automated watering system. We utilized an ESP32 module, Arduino IoT Cloud, and Arduino components. The system automatically activates when the soil moisture level drops below a certain threshold, ensuring optimal plant hydration. Additionally, owners can conveniently control watering schedules either through a physical controller or the Arduino app, offering flexibility and ease of use",
     gitlink: "",
     img: "/hwproject.jpg",
-    stack: ["/arduino.svg"],
+    stack: [
+      {
+        id: 1,
+        name: "Arduino",
+        image: "/arduino.svg",
+      },
+    ],
   },
 ];
 
