@@ -202,6 +202,7 @@ export const projects = [
       {
         id: 1,
         name: "View Source Code",
+        label: "portfolio github link",
         url: "https://github.com/arunapriyadarshana/portfolio",
       },
     ],
@@ -234,11 +235,13 @@ export const projects = [
       {
         id: 1,
         name: "View Frontend Source Code",
+        label: "homly frontend github link",
         url: "https://github.com/Team-DeltaX/homly-frontend.git",
       },
       {
         id: 2,
         name: "View Backend Source Code",
+        label: "homly backend github link",
         url: "https://github.com/Team-DeltaX/homly-backend.git",
       },
     ],

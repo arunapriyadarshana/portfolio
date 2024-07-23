@@ -55,7 +55,7 @@ const Project = () => {
                     </div>
                     <div className="flex flex-col items-end min-w-44 max-w-full space-y-1 ">
                       {links &&
-                        links.map(({ id, name, url }) => (
+                        links.map(({ id, name, label, url }) => (
                           <a
                             href={url}
                             target="_blank"
@@ -65,7 +65,7 @@ const Project = () => {
                             onClick={() =>
                               (window as any).gtag("event", "click", {
                                 event_category: "project",
-                                event_label: name,
+                                event_label: label,
                                 value: id,
                               })
                             }
