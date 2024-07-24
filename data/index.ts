@@ -152,13 +152,13 @@ export const programmingLanguages = [
 
 export const projects = [
   {
-    id: 4,
+    id: 7,
     title: "E-commerce Website",
     subTitle: "",
     description:
       "We are currently developing an e-commerce website using React, Node.js, MySQL, and TailwindCSS. This platform will allow users to browse products, add items to their cart, and complete purchases seamlessly. The project involves collaborative teamwork aimed at creating a user-friendly and efficient online store.",
     links: [],
-    img: "/ecompramuka.jpg",
+    img: "/project-images/ecompramuka.jpg",
     stack: [
       {
         id: 1,
@@ -193,7 +193,7 @@ export const projects = [
     ],
   },
   {
-    id: 3,
+    id: 6,
     title: "Portfolio Website",
     subTitle: "",
     description:
@@ -206,7 +206,7 @@ export const projects = [
         url: "https://github.com/arunapriyadarshana/portfolio",
       },
     ],
-    img: "/portfolio.jpg",
+    img: "/project-images/portfolio.jpg",
     stack: [
       {
         id: 1,
@@ -226,7 +226,7 @@ export const projects = [
     ],
   },
   {
-    id: 2,
+    id: 5,
     title: "Holiday Home Booking System",
     subTitle: "2nd Year Software Project",
     description:
@@ -245,7 +245,7 @@ export const projects = [
         url: "https://github.com/Team-DeltaX/homly-backend.git",
       },
     ],
-    img: "/hhbookingsystem.jpg",
+    img: "/project-images/hhbookingsystem.jpg",
     stack: [
       {
         id: 1,
@@ -275,18 +275,105 @@ export const projects = [
     ],
   },
   {
-    id: 1,
+    id: 4,
     title: "Automated Watering System",
     subTitle: "1st Year Hardware Project",
     description:
       "Our first-year hardware project involved creating an automated watering system. We utilized an ESP32 module, Arduino IoT Cloud, and Arduino components. The system automatically activates when the soil moisture level drops below a certain threshold, ensuring optimal plant hydration. Additionally, owners can conveniently control watering schedules either through a physical controller or the Arduino app, offering flexibility and ease of use",
-    gitlink: "",
-    img: "/hwproject.jpg",
+    img: "/project-images/hwproject.jpg",
     stack: [
       {
         id: 1,
         name: "Arduino",
         image: "/arduino.svg",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Hotel Website UI",
+    description: "",
+    links: [
+      {
+        id: 1,
+        name: "View Source Code",
+        label: "hotel website ui",
+        url: "https://github.com/arunapriyadarshana/hotel-web-ui.git",
+      },
+    ],
+    img: "/project-images/hotelwebsiteui.jpg",
+    stack: [
+      {
+        id: 1,
+        name: "HTML",
+        image: "/html.svg",
+      },
+      {
+        id: 2,
+        name: "CSS",
+        image: "/css.svg",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "BOC Website UI Clone",
+    description: "",
+    links: [
+      {
+        id: 1,
+        name: "View Source Code",
+        label: "boc website ui clone",
+        url: "https://github.com/booshananamudara/BOC-clone.git",
+      },
+    ],
+    img: "/project-images/bocwebsitecloneui.jpg",
+    stack: [
+      {
+        id: 1,
+        name: "HTML",
+        image: "/html.svg",
+      },
+      {
+        id: 2,
+        name: "CSS",
+        image: "/css.svg",
+      },
+      {
+        id: 3,
+        name: "JavaScript",
+        image: "/javascript.svg",
+      },
+    ],
+  },
+  {
+    id: 1,
+    title: "Tourism Website UI",
+    description: "",
+    links: [
+      {
+        id: 1,
+        name: "View Source Code",
+        label: "hotel website ui",
+        url: "https://github.com/LakshanKavindu/Tourism_Site_UI.git",
+      },
+    ],
+    img: "/project-images/tourismwebsiteui.jpg",
+    stack: [
+      {
+        id: 1,
+        name: "HTML",
+        image: "/html.svg",
+      },
+      {
+        id: 2,
+        name: "CSS",
+        image: "/css.svg",
+      },
+      {
+        id: 3,
+        name: "JavaScript",
+        image: "/javascript.svg",
       },
     ],
   },
