@@ -153,8 +153,9 @@ export const programmingLanguages = [
 export const projects = [
   {
     id: 7,
-    title: "E-commerce Website",
+    title: "Retail Shop Website",
     subTitle: "",
+    duration: "2024",
     description:
       "We are currently developing an e-commerce website using React, Node.js, MySQL, and TailwindCSS. This platform will allow users to browse products, add items to their cart, and complete purchases seamlessly. The project involves collaborative teamwork aimed at creating a user-friendly and efficient online store.",
     links: [],
@@ -196,6 +197,7 @@ export const projects = [
     id: 6,
     title: "Portfolio Website",
     subTitle: "",
+    duration: "2024",
     description:
       "I am building my portfolio website using Next.js and TailwindCSS. This site will showcase my personal details, skills, and my works in a user-friendly and visually appealing manner.",
     links: [
@@ -229,6 +231,7 @@ export const projects = [
     id: 5,
     title: "Holiday Home Booking System",
     subTitle: "2nd Year Software Project",
+    duration: "2023 - 2024",
     description:
       "For our second-year group project, we developed a holiday home booking system using React, Node.js, Oracle DB with TypeORM, and Material UI. This system allows users to browse available holiday homes, add reservations, and manage their bookings. Additionally, administrators have access to view detailed information and manage reservations. ",
     links: [
@@ -278,6 +281,7 @@ export const projects = [
     id: 4,
     title: "Automated Watering System",
     subTitle: "1st Year Hardware Project",
+    duration: "2022 - 2023",
     description:
       "Our first-year hardware project involved creating an automated watering system. We utilized an ESP32 module, Arduino IoT Cloud, and Arduino components. The system automatically activates when the soil moisture level drops below a certain threshold, ensuring optimal plant hydration. Additionally, owners can conveniently control watering schedules either through a physical controller or the Arduino app, offering flexibility and ease of use",
     img: "/project-images/hwproject.jpg",
@@ -292,6 +296,7 @@ export const projects = [
   {
     id: 3,
     title: "Hotel Website UI",
+    duration: "2023",
     description: "",
     links: [
       {
@@ -318,6 +323,7 @@ export const projects = [
   {
     id: 2,
     title: "BOC Website UI Clone",
+    duration: "2022",
     description: "",
     links: [
       {
@@ -349,6 +355,7 @@ export const projects = [
   {
     id: 1,
     title: "Tourism Website UI",
+    duration: "2022",
     description: "",
     links: [
       {

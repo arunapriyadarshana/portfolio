@@ -130,7 +130,7 @@ const Hero = () => {
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
               <h1 className="text-3xl font-bold">Technologies</h1>
             </div>
-            <div className="grid grid-rows-4 gap-5 mt-3">
+            <div className="flex flex-col gap-5 mt-3">
               <div
                 data-aos="fade-up"
                 data-aos-anchor-placement="center-bottom"

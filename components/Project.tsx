@@ -24,7 +24,16 @@ const Project = () => {
       </div>
       <div className="flex flex-wrap justify-center items-start gap-6 py-6">
         {projects.map(
-          ({ id, title, subTitle, description, links, img, stack }) => (
+          ({
+            id,
+            title,
+            subTitle,
+            description,
+            links,
+            img,
+            stack,
+            duration,
+          }) => (
             <div key={id} data-aos="zoom-out-up">
               <div className=" w-full relative max-w-sm">
                 <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-md blur-3xl" />
@@ -41,9 +50,19 @@ const Project = () => {
                   <h1 className="font-bold text-xl text-white  relative z-50">
                     {title}
                   </h1>
-                  <h2 className="font-semibold text-sm text-slate-500 mb-4 relative z-50">
-                    {subTitle}
-                  </h2>
+                  <div className="flex flex-row flex-wrap justify-between items-center w-full">
+                    {subTitle && (
+                      <h2 className="font-semibold text-sm text-slate-500 mb-4 relative z-50">
+                        {subTitle}
+                      </h2>
+                    )}
+
+                    {duration && (
+                      <h2 className="font-semibold text-sm text-slate-400 ml-2 mb-4 relative z-50">
+                        {duration}
+                      </h2>
+                    )}
+                  </div>
 
                   <p className="font-normal text-base text-slate-400 mb-4 relative z-50">
                     {description}
@@ -53,7 +72,7 @@ const Project = () => {
                     <div className="flex">
                       <AnimatedTooltip items={stack} />
                     </div>
-                    <div className="flex flex-col items-end min-w-44 max-w-full space-y-1 ">
+                    <div className="flex flex-col items-end min-w-44 w-full sm:w-fit space-y-1 ">
                       {links &&
                         links.map(({ id, name, label, url }) => (
                           <a
@@ -70,7 +89,7 @@ const Project = () => {
                               })
                             }
                           >
-                            <div className="flex flex-row gap-3">
+                            <div className="flex flex-row gap-3 ">
                               <p className="lg:text-sm text-xs truncate max-w-36 text-purple">
                                 {name}
                               </p>
