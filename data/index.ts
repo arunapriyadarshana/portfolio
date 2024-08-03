@@ -11,7 +11,7 @@ export const wordsArr = [
 ];
 
 export const aboutMe =
-  "I am an IT undergraduate at the University of Moratuwa with a GPA of 3.79. I enjoy solving problems and developing web applications. I have experience with Java, Python, JavaScript, TypeScrpt, React.js, Nextjs and Node.js, as well as database management. I am a team player with strong time management skills, and I am always eager to learn and take on new challenges.";
+  "I am an IT undergraduate at the University of Moratuwa with a GPA of 3.79. I enjoy solving problems and developing web applications. I have experience with Java, Python, JavaScript, TypeScrpt, React.js, Next.js and Node.js, as well as database management. I am a team player with strong time management skills, and I am always eager to learn and take on new challenges.";
 
 export const myAccount = [
   {

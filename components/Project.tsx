@@ -52,13 +52,13 @@ const Project = () => {
                   </h1>
                   <div className="flex flex-row flex-wrap justify-between items-center w-full">
                     {subTitle && (
-                      <h2 className="font-semibold text-sm text-slate-500 mb-4 relative z-50">
+                      <h2 className="font-semibold text-sm text-slate-500 mr-2 mb-4 relative z-50">
                         {subTitle}
                       </h2>
                     )}
 
                     {duration && (
-                      <h2 className="font-semibold text-sm text-slate-400 ml-2 mb-4 relative z-50">
+                      <h2 className="font-semibold text-sm text-slate-400 mb-4 relative z-50">
                         {duration}
                       </h2>
                     )}

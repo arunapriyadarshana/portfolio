@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="relative bg-black-100 flex justify-center items-center flex-col mx-auto overflow-clip sm:px-10 px-5 remove-scrollbar select">
-      <div className="max-w-7xl w-full remove-scrollbar  selection:*:bg-[#CBACF9]">
+      <div className="max-w-7xl w-full remove-scrollbar  selection:*:bg-[#694873]">
         <FloatingNav navItems={navItems} />
         <Hero />
         <Project />
