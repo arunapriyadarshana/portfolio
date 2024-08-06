@@ -405,6 +405,6 @@ export const socialMedia = [
   {
     id: 4,
     icon: "/whatsapp.svg",
-    link: "https://wa.me/94764112542?text=Hello,%20",
+    link: "https://wa.me/94764112542?text=Hello,%20I%20am%20",
   },
 ];
