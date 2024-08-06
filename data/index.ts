@@ -402,4 +402,9 @@ export const socialMedia = [
     icon: "/linkedin2.svg",
     link: "https://www.linkedin.com/in/aruna-priyadarshana-243060228/",
   },
+  {
+    id: 4,
+    icon: "/whatsapp.svg",
+    link: "whatsapp://send?abid=+94764112542&text=Hi%2C%20!",
+  },
 ];
