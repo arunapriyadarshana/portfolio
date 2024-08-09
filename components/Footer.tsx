@@ -1,6 +1,12 @@
-import { HeroHighlight } from "./ui/HeroHighlight";
+import dynamic from "next/dynamic";
+const HeroHighlight = dynamic(() =>
+  import("./ui/HeroHighlight").then((mod) => mod.HeroHighlight)
+);
+const MagicButton = dynamic(() =>
+  import("./ui/MagicButton").then((mod) => mod.default)
+);
+
 import { socialMedia } from "@/data";
-import MagicButton from "./ui/MagicButton";
 import Image from "next/image";
 import Link from "next/link";
 import logo1 from "@/public/logo1.png";

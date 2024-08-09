@@ -3,13 +3,8 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { BackgroundBeams } from "./ui/BackgroundBeam";
-import { TypewriterEffect } from "./ui/TypeWritterEffext";
 import Image from "next/image";
-import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import ProfilePhoto from "./ui/ProfilePhoto";
-import MagicButton from "./ui/MagicButton";
-import { HoverEffect } from "./ui/HoverCard";
+import dynamic from "next/dynamic";
 import {
   aboutMe,
   backEnd,
@@ -20,8 +15,43 @@ import {
   programmingLanguages,
   wordsArr,
 } from "@/data";
-import ShimmerButton from "./ui/ShimmerButton";
 import Link from "next/link";
+
+// Dynamically import the named components
+const BackgroundBeams = dynamic(
+  () => import("./ui/BackgroundBeam").then((mod) => mod.BackgroundBeams),
+  { ssr: false }
+);
+
+const TypewriterEffect = dynamic(
+  () => import("./ui/TypeWritterEffext").then((mod) => mod.TypewriterEffect),
+  { ssr: false }
+);
+
+const TextGenerateEffect = dynamic(
+  () => import("./ui/TextGenerateEffect").then((mod) => mod.TextGenerateEffect),
+  { ssr: false }
+);
+
+const HoverEffect = dynamic(
+  () => import("./ui/HoverCard").then((mod) => mod.HoverEffect),
+  { ssr: false }
+);
+
+const ProfilePhoto = dynamic(
+  () => import("./ui/ProfilePhoto").then((mod) => mod.default),
+  { ssr: false }
+);
+
+const MagicButton = dynamic(
+  () => import("./ui/MagicButton").then((mod) => mod.default),
+  { ssr: false }
+);
+
+const ShimmerButton = dynamic(
+  () => import("./ui/ShimmerButton").then((mod) => mod.default),
+  { ssr: false }
+);
 
 const Hero = () => {
   useEffect(() => {

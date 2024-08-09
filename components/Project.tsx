@@ -1,12 +1,39 @@
 "use client";
-import { useEffect } from "react";
+
+import { useEffect, memo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { projects } from "@/data";
 import Image from "next/image";
-import { Meteors } from "./ui/Meteors";
+import dynamic from "next/dynamic";
 import { FaLocationArrow } from "react-icons/fa6";
-import { AnimatedTooltip } from "./ui/AnimatedTooltip";
+
+// Dynamically import the heavy components
+const Meteors = dynamic(
+  () => import("./ui/Meteors").then((mod) => mod.Meteors),
+  { ssr: false }
+);
+const AnimatedTooltip = dynamic(
+  () => import("./ui/AnimatedTooltip").then((mod) => mod.AnimatedTooltip),
+  {
+    ssr: false,
+  }
+);
+
+const ProjectImage = memo(
+  ({ imageSrc, name }: { imageSrc: string; name: string }) => (
+    <Image
+      src={imageSrc}
+      alt={name}
+      width={400}
+      height={400}
+      className="rounded-sm"
+      loading="lazy"
+    />
+  )
+);
+
+ProjectImage.displayName = "ProjectImage";
 
 const Project = () => {
   useEffect(() => {
@@ -35,19 +62,19 @@ const Project = () => {
             duration,
           }) => (
             <div key={id} data-aos="zoom-out-up">
-              <div className=" w-full relative max-w-sm">
+              <div className="w-full relative max-w-sm">
+                {/* Gradient Background */}
                 <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-md blur-3xl" />
-                <div className="relative shadow-xl bg-gray-900 border border-gray-800  px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start">
-                  <div className="z-10 w-full h-full overflow-hidden  bg-[#13162d] mb-4">
-                    <Image
-                      src={img}
-                      alt={title}
-                      width={400}
-                      height={400}
-                      className="rounded-sm"
-                    />
+
+                {/* Project Card */}
+                <div className="relative shadow-xl bg-gray-900 border border-gray-800 px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start">
+                  {/* Project Image */}
+                  <div className="z-10 w-full h-full overflow-hidden bg-[#13162d] mb-4">
+                    <ProjectImage imageSrc={img} name={title} />
                   </div>
-                  <h1 className="font-bold text-xl text-white  relative z-50">
+
+                  {/* Project Title and SubTitle */}
+                  <h1 className="font-bold text-xl text-white relative z-50">
                     {title}
                   </h1>
                   <div className="flex flex-row flex-wrap justify-between items-center w-full">
@@ -64,11 +91,13 @@ const Project = () => {
                     )}
                   </div>
 
+                  {/* Project Description */}
                   <p className="font-normal text-base text-slate-400 mb-4 relative z-50">
                     {description}
                   </p>
 
-                  <div className="flex flex-wrap  w-full  justify-between mt-4 gap-5 z-50">
+                  {/* Project Links and Stack */}
+                  <div className="flex flex-wrap w-full justify-between mt-4 gap-5 z-50">
                     <div className="flex">
                       <AnimatedTooltip items={stack} />
                     </div>
@@ -100,6 +129,7 @@ const Project = () => {
                     </div>
                   </div>
 
+                  {/* Meteors Animation */}
                   <Meteors number={20} />
                 </div>
               </div>
