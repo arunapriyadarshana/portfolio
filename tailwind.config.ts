@@ -76,6 +76,9 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      dropShadow: {
+        primary: "0 35px 35px rgba(0, 0, 255, 0.5)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

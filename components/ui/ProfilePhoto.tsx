@@ -16,7 +16,7 @@ const ProfilePhoto = () => {
           alt="Aruna Priyadarshana"
           width={300}
           height={300}
-          className="pt-2 md:pt-5"
+          className="pt-2 md:pt-5 drop-shadow-primary"
         />
       </Button>
     </motion.div>

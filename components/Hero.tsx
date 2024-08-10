@@ -82,7 +82,7 @@ const Hero = () => {
                 </motion.div>
               </div>
             </div>
-            <div className="w-full flex flex-col items-center justify-center">
+            <div className="w-full flex flex-col items-center lg:items-end justify-center">
               <ProfilePhoto />
               <div className="md:hidden felx mt-10">
                 <motion.div
