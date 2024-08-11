@@ -5,8 +5,8 @@ import "aos/dist/aos.css";
 import { projects } from "@/data";
 import Image from "next/image";
 import { Meteors } from "./ui/Meteors";
-import { FaLocationArrow } from "react-icons/fa6";
 import { AnimatedTooltip } from "./ui/AnimatedTooltip";
+import Link from "next/link";
 
 const Project = () => {
   useEffect(() => {
@@ -42,9 +42,11 @@ const Project = () => {
                     <Image
                       src={img}
                       alt={title}
-                      width={400}
-                      height={400}
-                      className="rounded-sm"
+                      width={350}
+                      height={250}
+                      className="rounded-sm w-full h-auto"
+                      loading="eager"
+                      priority
                     />
                   </div>
                   <h1 className="font-bold text-xl text-white  relative z-50">
@@ -75,12 +77,13 @@ const Project = () => {
                     <div className="flex flex-col items-end min-w-44 w-full sm:w-fit space-y-1 ">
                       {links &&
                         links.map(({ id, name, label, url }) => (
-                          <a
+                          <Link
                             href={url}
                             target="_blank"
                             rel="noreferrer"
                             className="cursor-pointer"
                             key={id}
+                            prefetch={false}
                             onClick={() =>
                               (window as any).gtag("event", "click", {
                                 event_category: "project",
@@ -93,9 +96,15 @@ const Project = () => {
                               <p className="lg:text-sm text-xs truncate max-w-36 text-purple">
                                 {name}
                               </p>
-                              <FaLocationArrow color="#cbacf9" />
+                              <Image
+                                src="/locationArrowPurple.svg"
+                                alt={"arrow"}
+                                width={3}
+                                height={3}
+                                className="!w-3 !h-auto"
+                              />
                             </div>
-                          </a>
+                          </Link>
                         ))}
                     </div>
                   </div>

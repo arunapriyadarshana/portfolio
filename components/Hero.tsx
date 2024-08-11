@@ -110,7 +110,13 @@ const Hero = () => {
             </p>
             <div className="flex flex-row justify-center items-center gap-5 my-6">
               {myAccount.map(({ id, image, name, link }) => (
-                <Link key={id} href={link} passHref={true} target="_blank">
+                <Link
+                  key={id}
+                  href={link}
+                  passHref={true}
+                  target="_blank"
+                  prefetch={false}
+                >
                   <ShimmerButton image={image} name={name} />
                 </Link>
               ))}
@@ -149,6 +155,7 @@ const Hero = () => {
                         width={30}
                         height={30}
                         className="rounded-sm"
+                        loading="eager"
                       />
                       <p className="font-semibold text-lg">{title}</p>
                     </div>
@@ -173,6 +180,7 @@ const Hero = () => {
                         width={30}
                         height={30}
                         className="rounded-sm"
+                        loading="eager"
                       />
                       <p className="font-semibold text-lg">{title}</p>
                     </div>
@@ -197,6 +205,7 @@ const Hero = () => {
                         width={30}
                         height={30}
                         className="rounded-sm"
+                        loading="eager"
                       />
                       <p className="font-semibold text-lg">{title}</p>
                     </div>
@@ -221,6 +230,7 @@ const Hero = () => {
                         width={30}
                         height={30}
                         className="rounded-sm"
+                        loading="eager"
                       />
                       <p className="font-semibold text-lg">{title}</p>
                     </div>
