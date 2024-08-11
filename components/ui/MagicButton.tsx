@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 const MagicButton = ({
   title,
   icon,
@@ -7,7 +8,7 @@ const MagicButton = ({
   otherClasses,
 }: {
   title: string;
-  icon?: React.ReactNode;
+  icon?: string;
   position: string;
   handleClick?: () => void;
   otherClasses?: string;
@@ -21,9 +22,25 @@ const MagicButton = ({
       <div
         className={`relative inline-flex h-full w-full z-100 cursor-pointer items-center justify-center rounded-lg bg-slate-950 px-7 text-sm font-medium text-white backdrop-blur-3xl gap-3 ${otherClasses}`}
       >
-        {position === "left" && icon}
+        {position === "left" && icon && (
+          <Image
+            src={icon}
+            alt={title}
+            width={24}
+            height={24}
+            className="w-3 h-auto"
+          />
+        )}
         {title}
-        {position === "right" && icon}
+        {position === "right" && icon && (
+          <Image
+            src={icon}
+            alt={title}
+            width={24}
+            height={24}
+            className="w-6 h-auto"
+          />
+        )}
       </div>
     </button>
   );
