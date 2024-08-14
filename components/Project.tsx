@@ -45,7 +45,7 @@ const Project = () => {
                       alt={title}
                       width={350}
                       height={250}
-                      className="rounded-sm w-full h-auto"
+                      className="rounded-sm"
                       loading="eager"
                       priority
                     />

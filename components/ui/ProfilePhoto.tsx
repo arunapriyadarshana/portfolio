@@ -16,7 +16,7 @@ const ProfilePhoto = () => {
           alt="Aruna Priyadarshana"
           width={300}
           height={324}
-          className="pt-2 md:pt-5 drop-shadow-primary w-80 h-auto"
+          className="drop-shadow-primary"
           loading="eager"
           priority
         />

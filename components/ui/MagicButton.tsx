@@ -28,7 +28,7 @@ const MagicButton = ({
             alt={title}
             width={24}
             height={24}
-            className="w-3 h-auto"
+            className="w-6 h-auto"
           />
         )}
         {title}
