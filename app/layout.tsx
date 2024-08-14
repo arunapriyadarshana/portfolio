@@ -7,8 +7,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Aruna's Portfolio",
-  description: "Aruna Priyadarshana Bandara",
+  title: "Aruna Priyadarshana",
+  description: "Aruna Priyadarshana's Portfolio",
 };
 
 export default function RootLayout({
@@ -21,8 +21,6 @@ export default function RootLayout({
       <head />
       <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_MEASUREMENT_ID}`} />
       <body className={inter.className}>
-        <link rel="icon" href="/logo2.png" />
-        <link rel="apple-touch-icon" href="/logo2.png" />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

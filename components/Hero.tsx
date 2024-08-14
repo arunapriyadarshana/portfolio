@@ -100,9 +100,9 @@ const Hero = () => {
         </div>
         <div className="mx-2 my-10">
           <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-            <h1 className="heading my-5">
+            <h2 className="heading my-5">
               About <span className="text-purple">me</span>
-            </h1>
+            </h2>
             <p className="text-center text-base font-normal w-full px-2 md:px-20">
               {aboutMe}
             </p>
@@ -125,14 +125,14 @@ const Hero = () => {
             data-aos-anchor-placement="center-bottom"
             className="mt-5 flex flex-col items-center justify-center"
           >
-            <h1 className="text-3xl font-bold">Educations</h1>
+            <h2 className="text-3xl font-bold">Educations</h2>
             <div className="flex flex-wrap justify-center items-center">
               <HoverEffect items={eduDetails} />
             </div>
           </div>
           <div className="mt-5 flex flex-col items-center justify-center">
             <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-              <h1 className="text-3xl font-bold">Technologies</h1>
+              <h2 className="text-3xl font-bold">Technologies</h2>
             </div>
             <div className="flex flex-col gap-5 mt-3">
               <div
@@ -140,7 +140,7 @@ const Hero = () => {
                 data-aos-anchor-placement="center-bottom"
                 className="flex flex-col"
               >
-                <h1 className="text-2xl font-bold">Front-End Development</h1>
+                <h2 className="text-2xl font-bold">Front-End Development</h2>
                 <div className="flex flex-wrap gap-5 py-4">
                   {frontEnd.map(({ id, title, img }) => (
                     <div
@@ -165,7 +165,7 @@ const Hero = () => {
                 data-aos-anchor-placement="center-bottom"
                 className="flex flex-col"
               >
-                <h1 className="text-2xl font-bold">Back-End Development</h1>
+                <h2 className="text-2xl font-bold">Back-End Development</h2>
                 <div className="flex flex-wrap gap:3 md:gap-5 py-4">
                   {backEnd.map(({ id, title, img }) => (
                     <div
@@ -190,7 +190,7 @@ const Hero = () => {
                 data-aos-anchor-placement="center-bottom"
                 className="flex flex-col"
               >
-                <h1 className="text-2xl font-bold">Databases</h1>
+                <h2 className="text-2xl font-bold">Databases</h2>
                 <div className="flex flex-wrap gap-5 py-4">
                   {databases.map(({ id, title, img }) => (
                     <div
@@ -215,7 +215,7 @@ const Hero = () => {
                 data-aos-anchor-placement="center-bottom"
                 className="flex flex-col"
               >
-                <h1 className="text-2xl font-bold">Programming Languages</h1>
+                <h2 className="text-2xl font-bold">Programming Languages</h2>
                 <div className="flex flex-wrap gap-5 pt-4">
                   {programmingLanguages.map(({ id, title, img }) => (
                     <div

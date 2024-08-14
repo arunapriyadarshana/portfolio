@@ -19,9 +19,9 @@ const Project = () => {
   return (
     <div className="relative pt-2 pb-5" id="projects">
       <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-        <h1 className="heading">
+        <h2 className="heading">
           My <span className="text-purple">works</span>
-        </h1>
+        </h2>
       </div>
       <div className="flex flex-wrap justify-center items-start gap-6 py-6">
         {projects.map(
@@ -50,9 +50,9 @@ const Project = () => {
                       priority
                     />
                   </div>
-                  <h1 className="font-bold text-xl text-white  relative z-50">
+                  <h2 className="font-bold text-xl text-white  relative z-50">
                     {title}
-                  </h1>
+                  </h2>
                   <div className="flex flex-row flex-wrap justify-between items-center w-full">
                     {subTitle && (
                       <h2 className="font-semibold text-sm text-slate-500 mr-2 mb-4 relative z-50">
@@ -87,7 +87,7 @@ const Project = () => {
                             prefetch={false}
                             onClick={() =>
                               sendGAEvent("event", "project-link", {
-                                value: { label },
+                                value: label,
                               })
                             }
                           >
