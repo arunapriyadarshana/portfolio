@@ -22,6 +22,7 @@ import {
 } from "@/data";
 import ShimmerButton from "./ui/ShimmerButton";
 import Link from "next/link";
+import { sendGAEvent } from "@next/third-parties/google";
 
 const Hero = () => {
   useEffect(() => {
@@ -31,10 +32,7 @@ const Hero = () => {
   }, []);
 
   const handleClick = () => {
-    (window as any).gtag("event", "download", {
-      event_category: "Resume",
-      event_label: "Downloaded Resume",
-    });
+    sendGAEvent("Download Resume", "Click", "Resume");
     const link = document.createElement("a");
     link.href = "/Aruna_Priyadarshana_Resume.pdf";
     link.download = "Aruna_Priyadarshana_Resume.pdf";

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Meteors } from "./ui/Meteors";
 import { AnimatedTooltip } from "./ui/AnimatedTooltip";
 import Link from "next/link";
+import { sendGAEvent } from "@next/third-parties/google";
 
 const Project = () => {
   useEffect(() => {
@@ -85,10 +86,8 @@ const Project = () => {
                             key={id}
                             prefetch={false}
                             onClick={() =>
-                              (window as any).gtag("event", "click", {
-                                event_category: "project",
-                                event_label: label,
-                                value: id,
+                              sendGAEvent("event", "project-link", {
+                                value: { label },
                               })
                             }
                           >
