@@ -9,16 +9,8 @@ import {
   useSpring,
 } from "framer-motion";
 
-export const AnimatedTooltip = ({
-  items,
-}: {
-  items: {
-    id: number;
-    name: string;
-    image: string;
-  }[];
-}) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+export const AnimatedTooltip = ({ items }: { items: Technology[] }) => {
+  const [hoveredIndex, setHoveredIndex] = useState<string | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0); // going to set this value on mouse move
   // rotate the tooltip
@@ -42,11 +34,11 @@ export const AnimatedTooltip = ({
         <div
           className="-mr-3  relative group "
           key={item.name}
-          onMouseEnter={() => setHoveredIndex(item.id)}
+          onMouseEnter={() => setHoveredIndex(item.$id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence mode="popLayout">
-            {hoveredIndex === item.id && (
+            {hoveredIndex === item.$id && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
                 animate={{
@@ -79,7 +71,7 @@ export const AnimatedTooltip = ({
             onMouseMove={handleMouseMove}
             height={100}
             width={100}
-            src={item.image}
+            src={item.img}
             alt={item.name}
             className="object-cover !m-0 !p-0 object-top rounded-full h-10 w-10 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500 bg-black"
           />
