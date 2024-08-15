@@ -54,7 +54,7 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
             <div className="flex">
               <AnimatedTooltip items={stack} />
             </div>
-            <div className="flex flex-col items-end min-w-44 w-full sm:w-fit space-y-1 ">
+            <div className="flex flex-col items-end w-full space-y-1 ">
               {links &&
                 links.map((link) => (
                   <Link
@@ -71,7 +71,7 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
                     }
                   >
                     <div className="flex flex-row gap-3 ">
-                      <p className="lg:text-sm text-xs truncate max-w-36 text-purple">
+                      <p className="lg:text-sm text-xs text-purple">
                         {link.split(",")[0]}
                       </p>
                       <Image
@@ -117,7 +117,6 @@ const Project = () => {
         stack: project.technologies,
       }));
       setProjects(projectsData);
-      console.log("projects", projects);
     }
     fetchData();
   }, []);
