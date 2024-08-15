@@ -14,13 +14,7 @@ const Footer = () => {
       <HeroHighlight className="w-full">
         <div className="flex flex-col md:flex-row px-5 justify-center md:justify-between item-center gap-10 p-5">
           <div className="flex items-center justify-center md:justify-start md:gap-3 gap-6">
-            <Image
-              src={logo1}
-              alt="logo"
-              width={250}
-              height={50}
-              className="w-64 h-auto"
-            />
+            <Image src={logo1} alt="logo" width={250} height={50} />
           </div>
           <div className="flex flex-col items-center gap-5">
             <Link
