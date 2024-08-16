@@ -110,6 +110,7 @@ const Project = () => {
       const projectsData: Project[] = projects.map((project) => ({
         id: project.$id,
         title: project.title,
+        subTitle: project.subTitle,
         img: project.img,
         duration: project.duration,
         description: project.description,
