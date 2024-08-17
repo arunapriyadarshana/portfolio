@@ -42,7 +42,7 @@ const Hero = () => {
   };
   return (
     <div className="relative">
-      <div className="z-0 absolute w-screen h-screen">
+      <div className="z-0 absolute w-full h-screen">
         <BackgroundBeams />
       </div>
       <div className="pt-5 md:pt-28 lg:pt-36 z-10 relative" id="about">
