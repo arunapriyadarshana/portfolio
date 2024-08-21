@@ -10,9 +10,6 @@ export const wordsArr = [
   "Problem Solver",
 ];
 
-export const aboutMe =
-  "I am an IT undergraduate at the University of Moratuwa with a GPA of 3.79. I enjoy solving problems and developing web applications. I have experience with Java, Python, JavaScript, TypeScrpt, React.js, Next.js and Node.js, as well as database management. I am a team player with strong time management skills, and I am always eager to learn and take on new challenges.";
-
 export const myAccount = [
   {
     id: 1,
@@ -31,25 +28,6 @@ export const myAccount = [
     image: "/hackerrank.svg",
     name: "Hackerrank",
     link: "https://www.hackerrank.com/profile/arunapbandara45",
-  },
-];
-
-export const eduDetails = [
-  {
-    title: "University of Moratuwa ",
-    time: "Expected in 2026",
-    name: "BScHons in Information Technology",
-    description:
-      " I am an undergraduate at the University of Moratuwa, pursuing a BSc (Hons) in Information Technology. I am in my third year and have already completed coursework that includes Data Structures and Algorithms (DSA), Object-Oriented Programming (OOP), Database Management Systems (DBMS), and many more.",
-    other: "CGPA: 3.79 / 4.0",
-  },
-  {
-    title: "St. Anne's Collage, Kurunegala",
-    time: "2012 - 2020",
-    name: "GCE A/L in Physical Science Stream",
-    description:
-      "In 2020, I completed the GCE Advanced Level in the Physical Science stream with a Z-score of 1.6. I achieved an 'A' in Combined Mathematics and two 'B's in Physics and Chemistry.",
-    other: "Z-Score: 1.6557",
   },
 ];
 

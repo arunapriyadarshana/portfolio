@@ -14,3 +14,12 @@ declare interface Project {
   img: string;
   stack: Technology[];
 }
+
+declare interface Education {
+  id: string;
+  title: string;
+  time: string;
+  name: string;
+  description: string;
+  other?: string;
+}

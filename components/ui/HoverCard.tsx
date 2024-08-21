@@ -1,79 +1,77 @@
 "use client";
 
+import React from "react";
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-export const HoverEffect = ({
-  items,
-  className,
-}: {
-  items: {
-    name: string;
-    time: string;
-    title: string;
-    description: string;
-    other?: string;
-  }[];
+interface HoverEffectProps {
+  items: Education[];
   className?: string;
-}) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+}
 
-  return (
-    <div className={cn("grid grid-cols-1 lg:grid-cols-2 py-5", className)}>
-      {items.map((item, idx) => (
-        <div
-          key={idx}
-          className="relative group  block p-2 h-full w-full"
-          onMouseOver={() => setHoveredIndex(idx)}
-          onMouseOut={() => setHoveredIndex(null)}
-        >
-          <AnimatePresence>
-            {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
-                layoutId="hoverBackground"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.15 },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
-                }}
-              />
-            )}
-          </AnimatePresence>
-          <Card
-            name={item.name}
-            time={item.time}
-            title={item.title}
-            desciption={item.description}
-            other={item.other}
-            className="col-span-2"
-          />
-        </div>
-      ))}
-    </div>
-  );
-};
+export const HoverEffect = React.memo(
+  ({ items, className }: HoverEffectProps) => {
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+    return (
+      <div className={cn("grid grid-cols-1 lg:grid-cols-2 py-5", className)}>
+        {items.map((item, idx) => (
+          <div
+            key={idx}
+            className="relative group block p-2 h-full w-full"
+            onMouseOver={() => setHoveredIndex(idx)}
+            onMouseOut={() => setHoveredIndex(null)}
+          >
+            <AnimatePresence>
+              {hoveredIndex === idx && (
+                <motion.span
+                  className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
+                  layoutId="hoverBackground"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.15 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.15, delay: 0.2 },
+                  }}
+                />
+              )}
+            </AnimatePresence>
+            <Card
+              name={item.name}
+              time={item.time}
+              title={item.title}
+              description={item.description} // Fixed typo from 'desciption' to 'description'
+              other={item.other}
+              className="col-span-2"
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
+);
+
+interface CardProps {
+  className?: string;
+  time: string;
+  title: string;
+  name: string;
+  description: string; // Fixed typo from 'desciption' to 'description'
+  other?: string;
+}
 
 export const Card = ({
   className,
   time,
   title,
   name,
-  desciption,
+  description,
   other,
-}: {
-  className?: string;
-  time: string;
-  title: string;
-  name: string;
-  desciption: string;
-  other?: string;
-}) => {
+}: CardProps) => {
   return (
     <div
       className={cn(
@@ -87,7 +85,7 @@ export const Card = ({
       }}
     >
       <div className="relative z-50">
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <h4
             className={cn("text-zinc-100 font-bold tracking-wide ", className)}
           >
@@ -111,14 +109,17 @@ export const Card = ({
           </h4>
           <p
             className={cn(
-              "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
+              "mt-3 text-zinc-400 tracking-wide leading-relaxed text-sm",
               className
             )}
           >
-            {desciption}
+            {description}
           </p>
           <h4
-            className={cn("text-zinc-100 font-bold tracking-wide ", className)}
+            className={cn(
+              "text-zinc-100 font-bold tracking-wide mt-3",
+              className
+            )}
           >
             {other}
           </h4>
@@ -127,3 +128,5 @@ export const Card = ({
     </div>
   );
 };
+
+HoverEffect.displayName = "HoverEffect";

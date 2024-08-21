@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,21 +10,62 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import ProfilePhoto from "./ui/ProfilePhoto";
 import MagicButton from "./ui/MagicButton";
 import { HoverEffect } from "./ui/HoverCard";
-import {
-  aboutMe,
-  backEnd,
-  databases,
-  eduDetails,
-  frontEnd,
-  myAccount,
-  programmingLanguages,
-  wordsArr,
-} from "@/data";
+import { myAccount, wordsArr } from "@/data";
 import ShimmerButton from "./ui/ShimmerButton";
 import Link from "next/link";
 import { sendGAEvent } from "@next/third-parties/google";
 
-const Hero = () => {
+const AboutMe = React.memo(({ aboutMe }: { aboutMe: string }) => {
+  return (
+    <p className="text-center text-base font-normal w-full px-2 md:px-20">
+      {aboutMe && aboutMe}
+    </p>
+  );
+});
+
+AboutMe.displayName = "AboutMe";
+
+const Technology = React.memo(({ data }: { data: Technology[] }) => {
+  return (
+    <div className="flex flex-wrap gap-5 py-4">
+      {data.map(({ $id, name, img }) => (
+        <div
+          key={$id}
+          className="flex flex-row items-center justify-center gap-3"
+        >
+          <Image
+            src={img}
+            alt={name}
+            width={30}
+            height={30}
+            className="rounded-sm"
+            loading="eager"
+          />
+          <p className="font-semibold text-lg">{name}</p>
+        </div>
+      ))}
+    </div>
+  );
+});
+
+Technology.displayName = "Technology";
+
+const Hero = ({
+  aboutMe,
+  eduData,
+  technologies,
+}: {
+  aboutMe: string;
+  eduData: Education[];
+  technologies: {
+    frontEnd: Technology[];
+    backEnd: Technology[];
+    databases: Technology[];
+    programmingLanguages: Technology[];
+    tools: Technology[];
+    mobile: Technology[];
+  };
+}) => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -103,9 +144,7 @@ const Hero = () => {
             <h2 className="heading my-5">
               About <span className="text-purple">me</span>
             </h2>
-            <p className="text-center text-base font-normal w-full px-2 md:px-20">
-              {aboutMe}
-            </p>
+            <AboutMe aboutMe={aboutMe} />
             <div className="flex flex-row justify-center items-center gap-5 my-6">
               {myAccount.map(({ id, image, name, link }) => (
                 <Link
@@ -127,7 +166,7 @@ const Hero = () => {
           >
             <h2 className="text-3xl font-bold">Educations</h2>
             <div className="flex flex-wrap justify-center items-center">
-              <HoverEffect items={eduDetails} />
+              <HoverEffect items={eduData} />
             </div>
           </div>
           <div className="mt-5 flex flex-col items-center justify-center">
@@ -135,106 +174,70 @@ const Hero = () => {
               <h2 className="text-3xl font-bold">Technologies</h2>
             </div>
             <div className="flex flex-col gap-5 mt-3">
-              <div
-                data-aos="fade-up"
-                data-aos-anchor-placement="center-bottom"
-                className="flex flex-col"
-              >
-                <h2 className="text-2xl font-bold">Front-End Development</h2>
-                <div className="flex flex-wrap gap-5 py-4">
-                  {frontEnd.map(({ id, title, img }) => (
-                    <div
-                      key={id}
-                      className="flex flex-row items-center justify-center gap-3"
-                    >
-                      <Image
-                        src={img}
-                        alt={title}
-                        width={30}
-                        height={30}
-                        className="rounded-sm"
-                        loading="eager"
-                      />
-                      <p className="font-semibold text-lg">{title}</p>
-                    </div>
-                  ))}
+              {technologies.frontEnd && technologies.frontEnd.length > 0 && (
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-bottom"
+                  className="flex flex-col"
+                >
+                  <h2 className="text-2xl font-bold">Front-End Development</h2>
+                  <Technology data={technologies.frontEnd} />
                 </div>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-anchor-placement="center-bottom"
-                className="flex flex-col"
-              >
-                <h2 className="text-2xl font-bold">Back-End Development</h2>
-                <div className="flex flex-wrap gap:3 md:gap-5 py-4">
-                  {backEnd.map(({ id, title, img }) => (
-                    <div
-                      key={id}
-                      className="flex flex-row items-center justify-center gap-3"
-                    >
-                      <Image
-                        src={img}
-                        alt={title}
-                        width={30}
-                        height={30}
-                        className="rounded-sm"
-                        loading="eager"
-                      />
-                      <p className="font-semibold text-lg">{title}</p>
-                    </div>
-                  ))}
+              )}
+              {technologies.mobile && technologies.mobile.length > 0 && (
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-bottom"
+                  className="flex flex-col"
+                >
+                  <h2 className="text-2xl font-bold">Mobile Development</h2>
+                  <Technology data={technologies.mobile} />
                 </div>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-anchor-placement="center-bottom"
-                className="flex flex-col"
-              >
-                <h2 className="text-2xl font-bold">Databases</h2>
-                <div className="flex flex-wrap gap-5 py-4">
-                  {databases.map(({ id, title, img }) => (
-                    <div
-                      key={id}
-                      className="flex flex-row items-center justify-center gap-3"
-                    >
-                      <Image
-                        src={img}
-                        alt={title}
-                        width={30}
-                        height={30}
-                        className="rounded-sm"
-                        loading="eager"
-                      />
-                      <p className="font-semibold text-lg">{title}</p>
-                    </div>
-                  ))}
+              )}
+              {technologies.backEnd && technologies.backEnd.length > 0 && (
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-bottom"
+                  className="flex flex-col"
+                >
+                  <h2 className="text-2xl font-bold">Back-End Development</h2>
+                  <Technology data={technologies.backEnd} />
                 </div>
-              </div>
-              <div
-                data-aos="fade-up"
-                data-aos-anchor-placement="center-bottom"
-                className="flex flex-col"
-              >
-                <h2 className="text-2xl font-bold">Programming Languages</h2>
-                <div className="flex flex-wrap gap-5 pt-4">
-                  {programmingLanguages.map(({ id, title, img }) => (
-                    <div
-                      key={id}
-                      className="flex flex-row items-center justify-center gap-3"
-                    >
-                      <Image
-                        src={img}
-                        alt={title}
-                        width={30}
-                        height={30}
-                        className="rounded-sm"
-                        loading="eager"
-                      />
-                      <p className="font-semibold text-lg">{title}</p>
-                    </div>
-                  ))}
+              )}
+
+              {technologies.databases && technologies.databases.length > 0 && (
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-bottom"
+                  className="flex flex-col"
+                >
+                  <h2 className="text-2xl font-bold">Databases</h2>
+                  <Technology data={technologies.databases} />
                 </div>
-              </div>
+              )}
+              {technologies.programmingLanguages &&
+                technologies.programmingLanguages.length > 0 && (
+                  <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    className="flex flex-col"
+                  >
+                    <h2 className="text-2xl font-bold">
+                      Programming Languages
+                    </h2>
+                    <Technology data={technologies.programmingLanguages} />
+                  </div>
+                )}
+              {technologies.tools && technologies.tools.length > 0 && (
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-bottom"
+                  className="flex flex-col"
+                >
+                  <h2 className="text-2xl font-bold">Tools</h2>
+                  <Technology data={technologies.tools} />
+                </div>
+              )}
             </div>
           </div>
         </div>

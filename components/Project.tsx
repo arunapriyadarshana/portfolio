@@ -1,20 +1,18 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import { projects } from "@/data";
 import Image from "next/image";
 import { Meteors } from "./ui/Meteors";
 import { AnimatedTooltip } from "./ui/AnimatedTooltip";
 import Link from "next/link";
 import { sendGAEvent } from "@next/third-parties/google";
-import { getProjects } from "@/lib/actions/project.actions";
 
 const ProjectCard = React.memo(({ project }: { project: Project }) => {
   const { id, title, subTitle, duration, description, img, stack, links } =
     project;
   return (
-    <div key={id} data-aos="zoom-out-up">
+    <div data-aos="zoom-out-up">
       <div className=" w-full relative max-w-sm">
         <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-md blur-3xl" />
         <div className="relative shadow-xl bg-gray-900 border border-gray-800  px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start">
@@ -29,6 +27,8 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
               priority
             />
           </div>
+
+          {`id : ${id}`}
           <h2 className="font-bold text-xl text-white  relative z-50">
             {title}
           </h2>
@@ -96,30 +96,11 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
 
 ProjectCard.displayName = "ProjectCard";
 
-const Project = () => {
+const Project = ({ data }: { data: Project[] }) => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
     });
-  }, []);
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const { documents: projects } = await getProjects();
-      const projectsData: Project[] = projects.map((project) => ({
-        id: project.$id,
-        title: project.title,
-        subTitle: project.subTitle,
-        img: project.img,
-        duration: project.duration,
-        description: project.description,
-        links: project.links,
-        stack: project.technologies,
-      }));
-      setProjects(projectsData);
-    }
-    fetchData();
   }, []);
 
   return (
@@ -130,8 +111,8 @@ const Project = () => {
         </h2>
       </div>
       <div className="flex flex-wrap justify-center items-start gap-6 py-6">
-        {projects &&
-          projects.map((project) => (
+        {data &&
+          data.map((project) => (
             <ProjectCard project={project} key={project.id} />
           ))}
       </div>
