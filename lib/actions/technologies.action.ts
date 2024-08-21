@@ -11,8 +11,7 @@ export const getTechnologies = async () => {
   const documents = await databases.listDocuments(
     DATABASE_ID!,
     TECHNOLOGIES_COLLECTION_ID!,
-    [Query.orderDesc("order"), Query.equal("isVisible", true)]
+    [Query.orderDesc("catagory"), Query.orderDesc("order")]
   );
-
   return documents;
 };
