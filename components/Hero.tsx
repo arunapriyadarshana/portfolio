@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,7 +10,7 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import ProfilePhoto from "./ui/ProfilePhoto";
 import MagicButton from "./ui/MagicButton";
 import { HoverEffect } from "./ui/HoverCard";
-import { myAccount, wordsArr } from "@/data";
+import { wordsArr } from "@/data";
 import ShimmerButton from "./ui/ShimmerButton";
 import Link from "next/link";
 import { sendGAEvent } from "@next/third-parties/google";
@@ -53,10 +53,13 @@ Technology.displayName = "Technology";
 const Hero = ({
   aboutMe,
   eduData,
+  eduSocial,
   technologies,
+  cvUrl,
 }: {
   aboutMe: string;
   eduData: Education[];
+  eduSocial: Social[];
   technologies: {
     frontEnd: Technology[];
     backEnd: Technology[];
@@ -65,6 +68,7 @@ const Hero = ({
     tools: Technology[];
     mobile: Technology[];
   };
+  cvUrl: string;
 }) => {
   useEffect(() => {
     AOS.init({
@@ -74,12 +78,16 @@ const Hero = ({
 
   const handleClick = () => {
     sendGAEvent("Download Resume", "Click", "Resume");
+    const cvBlob = new Blob([cvUrl], { type: "application/pdf" });
+    const url = window.URL.createObjectURL(cvBlob);
+
     const link = document.createElement("a");
-    link.href = "/Aruna_Priyadarshana_Resume.pdf";
-    link.download = "Aruna_Priyadarshana_Resume.pdf";
+    link.href = url;
+    link.setAttribute("download", "Aruna_Priyadarshana_Resume.pdf");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
   return (
     <div className="relative">
@@ -146,17 +154,18 @@ const Hero = ({
             </h2>
             <AboutMe aboutMe={aboutMe} />
             <div className="flex flex-row justify-center items-center gap-5 my-6">
-              {myAccount.map(({ id, image, name, link }) => (
-                <Link
-                  key={id}
-                  href={link}
-                  passHref={true}
-                  target="_blank"
-                  prefetch={false}
-                >
-                  <ShimmerButton image={image} name={name} />
-                </Link>
-              ))}
+              {eduSocial &&
+                eduSocial.map(({ id, name, icon, link }) => (
+                  <Link
+                    key={id}
+                    href={link}
+                    passHref={true}
+                    target="_blank"
+                    prefetch={false}
+                  >
+                    <ShimmerButton image={icon} name={name} />
+                  </Link>
+                ))}
             </div>
           </div>
           <div

@@ -27,8 +27,6 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
               priority
             />
           </div>
-
-          {`id : ${id}`}
           <h2 className="font-bold text-xl text-white  relative z-50">
             {title}
           </h2>

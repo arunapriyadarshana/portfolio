@@ -1,11 +1,10 @@
 import { HeroHighlight } from "./ui/HeroHighlight";
-import { socialMedia } from "@/data";
 import MagicButton from "./ui/MagicButton";
 import Image from "next/image";
 import Link from "next/link";
 import logo1 from "@/public/logo1.png";
 
-const Footer = () => {
+const Footer = ({ social }: { social: Social[] }) => {
   return (
     <footer
       className="w-full mb-1 md:mb-3 py-5 divide-y divide-blue-200/[0.5]"
@@ -29,25 +28,26 @@ const Footer = () => {
               />
             </Link>
             <div className="flex items-center justify-center md:justify-start md:gap-3 gap-6">
-              {socialMedia.map(({ id, icon, link }) => (
-                <Link
-                  key={id}
-                  href={link}
-                  passHref={true}
-                  target="_blank"
-                  prefetch={false}
-                >
-                  <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-75 saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300">
-                    <Image
-                      src={icon}
-                      alt="social media"
-                      width={25}
-                      height={25}
-                      loading="eager"
-                    />
-                  </div>
-                </Link>
-              ))}
+              {social &&
+                social.map(({ id, icon, link, name }) => (
+                  <Link
+                    key={id}
+                    href={link}
+                    passHref={true}
+                    target="_blank"
+                    prefetch={false}
+                  >
+                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-75 saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300">
+                      <Image
+                        src={icon}
+                        alt={name}
+                        width={25}
+                        height={25}
+                        loading="eager"
+                      />
+                    </div>
+                  </Link>
+                ))}
             </div>
           </div>
         </div>

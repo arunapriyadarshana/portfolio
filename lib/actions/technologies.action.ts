@@ -17,6 +17,5 @@ export const getTechnologies = async () => {
       Query.orderDesc("order"),
     ]
   );
-  console.log(documents);
   return documents;
 };

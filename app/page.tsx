@@ -6,11 +6,14 @@ import Footer from "@/components/Footer";
 import { getProjects } from "@/lib/actions/project.actions";
 import { getAbout } from "@/lib/actions/about.actions";
 import { getTechnologies } from "@/lib/actions/technologies.action";
+import { getSocialMedia } from "@/lib/actions/social.action";
 
 export default async function Home() {
   // await new Promise((resolve) => setTimeout(resolve, 30000));
   const heroData = await getAbout();
   const aboutMeData = heroData.documents.find((doc) => doc.title === "aboutMe")
+    ?.details[0];
+  const cvUrl = heroData.documents.find((doc) => doc.title === "cv")
     ?.details[0];
   const eduData =
     heroData.documents.find((doc) => doc.title === "edu")?.details || [];
@@ -46,21 +49,33 @@ export default async function Home() {
       const category = item.catagory;
       if (!acc[category]) {
         acc[category] = [];
-        console.log(category);
       }
       acc[category].push(item);
       return acc;
     },
     {}
   );
-  console.log(groupedTechnologies.tool, groupedTechnologies.none);
+  const socials = await getSocialMedia();
+  const groupedSocials = socials.documents.reduce(
+    (acc: { [key: string]: any }, item) => {
+      const category = item.catagory;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(item);
+      return acc;
+    },
+    {}
+  );
+
   return (
     <main className="relative bg-black-100 flex justify-center items-center flex-col mx-auto overflow-clip sm:px-10 px-5 remove-scrollbar select">
-      <div className="max-w-7xl w-full remove-scrollbar  selection:*:bg-[#694873]">
+      <div className="max-w-7xl w-full remove-scrollbar  selection:*:bg-[#611d75]">
         <FloatingNav navItems={navItems} />
         <Hero
           aboutMe={aboutMeData}
           eduData={formattedEduData}
+          eduSocial={groupedSocials.edu || []}
           technologies={{
             frontEnd: groupedTechnologies.frontEnd || [],
             backEnd: groupedTechnologies.backEnd || [],
@@ -69,9 +84,10 @@ export default async function Home() {
             tools: groupedTechnologies.tool || [],
             mobile: groupedTechnologies.mobile || [],
           }}
+          cvUrl={cvUrl}
         />
         <Project data={projectsData} />
-        <Footer />
+        <Footer social={groupedSocials.social || []} />
       </div>
     </main>
   );

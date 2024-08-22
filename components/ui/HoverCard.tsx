@@ -44,7 +44,7 @@ export const HoverEffect = React.memo(
               name={item.name}
               time={item.time}
               title={item.title}
-              description={item.description} // Fixed typo from 'desciption' to 'description'
+              description={item.description}
               other={item.other}
               className="col-span-2"
             />
@@ -60,7 +60,7 @@ interface CardProps {
   time: string;
   title: string;
   name: string;
-  description: string; // Fixed typo from 'desciption' to 'description'
+  description: string;
   other?: string;
 }
 

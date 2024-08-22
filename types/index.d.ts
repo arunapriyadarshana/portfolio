@@ -23,3 +23,10 @@ declare interface Education {
   description: string;
   other?: string;
 }
+
+declare interface Social {
+  id: string;
+  name: string;
+  link: string;
+  icon: string;
+}
