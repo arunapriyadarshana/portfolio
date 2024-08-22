@@ -46,12 +46,14 @@ export default async function Home() {
       const category = item.catagory;
       if (!acc[category]) {
         acc[category] = [];
+        console.log(category);
       }
       acc[category].push(item);
       return acc;
     },
     {}
   );
+  console.log(groupedTechnologies.tool, groupedTechnologies.none);
   return (
     <main className="relative bg-black-100 flex justify-center items-center flex-col mx-auto overflow-clip sm:px-10 px-5 remove-scrollbar select">
       <div className="max-w-7xl w-full remove-scrollbar  selection:*:bg-[#694873]">
@@ -64,7 +66,7 @@ export default async function Home() {
             backEnd: groupedTechnologies.backEnd || [],
             databases: groupedTechnologies.database || [],
             programmingLanguages: groupedTechnologies.programming || [],
-            tools: groupedTechnologies.tools || [],
+            tools: groupedTechnologies.tool || [],
             mobile: groupedTechnologies.mobile || [],
           }}
         />
