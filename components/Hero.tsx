@@ -76,19 +76,34 @@ const Hero = ({
     });
   }, []);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     sendGAEvent("Download Resume", "Click", "Resume");
-    const cvBlob = new Blob([cvUrl], { type: "application/pdf" });
-    const url = window.URL.createObjectURL(cvBlob);
 
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "Aruna_Priyadarshana_Resume.pdf");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
+    const resumeUrl =
+      "https://cloud.appwrite.io/v1/storage/buckets/66be49a2000125117287/files/66cb53fb0011f9cbd338/view?project=66be47a6001fe7a2e4e2&mode=admin";
+
+    try {
+      const response = await fetch(resumeUrl);
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Aruna_Priyadarshana_Resume.pdf"; 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading the resume:", error);
+    }
   };
+
+
+  
   return (
     <div className="relative">
       <div className="z-0 absolute w-full h-screen">
