@@ -9,7 +9,7 @@ import Link from "next/link";
 import { sendGAEvent } from "@next/third-parties/google";
 
 const ProjectCard = React.memo(({ project }: { project: Project }) => {
-  const { id, title, subTitle, duration, description, img, stack, links } =
+  const {  title, subTitle, duration, description, img, stack, links } =
     project;
   return (
     <div data-aos="zoom-out-up">
@@ -60,7 +60,7 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
                     target="_blank"
                     rel="noreferrer"
                     className="cursor-pointer"
-                    key={id}
+                    key={link.split(",")[1]}
                     prefetch={false}
                     onClick={() =>
                       sendGAEvent("event", "project-link", {

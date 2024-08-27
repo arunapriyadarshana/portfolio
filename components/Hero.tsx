@@ -77,13 +77,23 @@ const Hero = ({
   }, []);
 
   const handleClick = () => {
-    sendGAEvent("Download Resume", "Click", "Resume");
-    const link = document.createElement("a");
-    link.href = "/Aruna_Priyadarshana_Resume.pdf";
-    link.download = "Aruna_Priyadarshana_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    sendGAEvent("event", "download-cv", { value: "cv" });
+    fetch(cvUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const blobUrl = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = blobUrl;
+        link.download = "Aruna_Priyadarshana_Resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
+      })
+      .catch((error) => {
+        console.error("Error downloading CV:", error);
+      });
   };
 
   return (
