@@ -1,42 +1,26 @@
 import { withSentryConfig } from "@sentry/nextjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com"], // Allow images from res.cloudinary.com
   },
 };
 
 export default withSentryConfig(nextConfig, {
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options
-
+  // Sentry organization and project
   org: "aruna-tf",
   project: "portfolio",
 
-  // Only print logs for uploading source maps in CI
-  silent: !process.env.CI,
+  // Configuration options for Sentry Webpack plugin
+  silent: !process.env.CI, // Only log in CI environments
+  widenClientFileUpload: true, // Upload more source maps for better stack traces
+  hideSourceMaps: true, // Hide source maps from client bundles
+  disableLogger: true, // Remove Sentry logging statements to reduce bundle size
 
-  // For all available options, see:
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-  // Upload a larger set of source maps for prettier stack traces (increases build time)
-  widenClientFileUpload: true,
-
-  // Uncomment to route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
-  // This can increase your server load as well as your hosting bill.
-  // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
-  // side errors will fail.
+  // Optional: Uncomment to route Sentry requests through a custom route
   // tunnelRoute: "/monitoring",
 
-  // Hides source maps from generated client bundles
-  hideSourceMaps: true,
-
-  // Automatically tree-shake Sentry logger statements to reduce bundle size
-  disableLogger: true,
-
-  // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-  // See the following for more information:
-  // https://docs.sentry.io/product/crons/
-  // https://vercel.com/docs/cron-jobs
+  // Enable automatic Vercel Cron Monitor instrumentation
   automaticVercelMonitors: true,
 });
