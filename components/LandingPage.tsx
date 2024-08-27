@@ -10,7 +10,6 @@ import { getTechnologies } from "@/lib/actions/technologies.action";
 import { getSocialMedia } from "@/lib/actions/social.action";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
-import { set } from "react-ga";
 
 const LandingPage = () => {
     const [aboutMeData, setAboutMeData] = useState("");

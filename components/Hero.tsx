@@ -92,7 +92,7 @@ const Hero = ({
         URL.revokeObjectURL(blobUrl);
       })
       .catch((error) => {
-        console.error("Error downloading CV:", error);
+        return;
       });
   };
 
