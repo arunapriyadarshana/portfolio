@@ -3,9 +3,3 @@ export const navItems = [
   { name: "Projects", link: "#projects" },
   { name: "Contact", link: "#contact" },
 ];
-
-export const wordsArr = [
-  "Front-End Developer",
-  "Back-End Developer",
-  "Problem Solver",
-];

@@ -1,4 +1,6 @@
 "use client";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Hero from "@/components/Hero";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import Project from "@/components/Project";
@@ -12,6 +14,13 @@ import { useEffect, useState } from "react";
 import Loader from "./Loader";
 
 const LandingPage = () => {
+   useEffect(() => {
+     AOS.init({
+       duration: 1000,
+     });
+   }, []);
+  const [profilePic, setProfilePic] = useState("");
+  const [wordsArray, setWordsArray] = useState([]);
     const [aboutMeData, setAboutMeData] = useState("");
     const [cvUrl, setCvUrl] = useState("");
     const [formattedEduData, setFormattedEduData] = useState([]);
@@ -48,7 +57,15 @@ const LandingPage = () => {
     
     useEffect(() => { 
         const fetchData = async () => { 
-            const heroData = await getAbout();
+          const heroData = await getAbout();
+          const profilePic = heroData.documents.find(
+              (doc) => doc.title === "profilePic"
+          )?.details[0];
+          setProfilePic(profilePic);
+          const wordsArray = heroData.documents.find(
+            (doc) => doc.title === "wordsArr"
+          )?.details;
+          setWordsArray(wordsArray);
             const aboutMeData = heroData.documents.find(
               (doc) => doc.title === "aboutMe"
             )?.details[0];
@@ -93,6 +110,8 @@ const LandingPage = () => {
               description: project.description,
               links: project.links,
               stack: project.technologies,
+              role: project.role,
+              
             }));
             setProjectsData(projectsData);
             setLoading((prev) => ({ ...prev, projectsData: false }));
@@ -119,7 +138,7 @@ const LandingPage = () => {
             });
             setLoading((prev) => ({ ...prev, technologies: false }));
 
-            const socials = await getSocialMedia();
+          const socials = await getSocialMedia();
             const groupedSocials = socials.documents.reduce(
               (acc: { [key: string]: any }, item) => {
                 const category = item.catagory;
@@ -155,7 +174,9 @@ const LandingPage = () => {
       ) : (
         <div className="max-w-7xl w-full remove-scrollbar  selection:*:bg-[#611d75]">
           <FloatingNav navItems={navItems} />
-          <Hero
+            <Hero
+              profilePic={profilePic}
+              wordsArr={wordsArray}
             aboutMe={aboutMeData}
             eduData={formattedEduData}
             eduSocial={groupedSocials.edu || []}

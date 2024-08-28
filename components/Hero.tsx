@@ -1,8 +1,6 @@
-"use client";
-import React, { useEffect } from "react";
+
+import React from "react";
 import { motion } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { BackgroundBeams } from "./ui/BackgroundBeam";
 import { TypewriterEffect } from "./ui/TypeWritterEffext";
 import Image from "next/image";
@@ -10,7 +8,6 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import ProfilePhoto from "./ui/ProfilePhoto";
 import MagicButton from "./ui/MagicButton";
 import { HoverEffect } from "./ui/HoverCard";
-import { wordsArr } from "@/data";
 import ShimmerButton from "./ui/ShimmerButton";
 import Link from "next/link";
 import { sendGAEvent } from "@next/third-parties/google";
@@ -51,12 +48,16 @@ const Technology = React.memo(({ data }: { data: Technology[] }) => {
 Technology.displayName = "Technology";
 
 const Hero = ({
+  profilePic,
+  wordsArr,
   aboutMe,
   eduData,
   eduSocial,
   technologies,
   cvUrl,
 }: {
+    profilePic: string;
+  wordsArr: string[];
   aboutMe: string;
   eduData: Education[];
   eduSocial: Social[];
@@ -70,15 +71,17 @@ const Hero = ({
   };
   cvUrl: string;
 }) => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-    });
-  }, []);
+ 
 
   const handleClick = () => {
     sendGAEvent("event", "download-cv", { value: "cv" });
-    fetch(cvUrl)
+    fetch(cvUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/pdf",
+      },
+      mode: "no-cors",
+    })
       .then((response) => response.blob())
       .then((blob) => {
         const blobUrl = URL.createObjectURL(blob);
@@ -137,7 +140,7 @@ const Hero = ({
               </div>
             </div>
             <div className="w-full flex flex-col items-center lg:items-end justify-center">
-              <ProfilePhoto />
+              <ProfilePhoto profileImg={ profilePic} />
               <div className="md:hidden felx mt-10">
                 <motion.div
                   initial={{ opacity: 0, x: 100 }}
@@ -161,15 +164,17 @@ const Hero = ({
             </h2>
             <AboutMe aboutMe={aboutMe} />
             <div className="flex flex-row justify-center items-center gap-5 my-6">
+            
               {eduSocial &&
-                eduSocial.map(({ id, name, icon, link }) => (
+                eduSocial.map(({ $id, name, icon, link }) => (
                   <Link
-                    key={id}
+                    key={$id}
                     href={link}
                     passHref={true}
                     target="_blank"
                     prefetch={false}
                   >
+            
                     <ShimmerButton image={icon} name={name} />
                   </Link>
                 ))}

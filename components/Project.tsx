@@ -1,7 +1,4 @@
-"use client";
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React from "react";
 import Image from "next/image";
 import { Meteors } from "./ui/Meteors";
 import { AnimatedTooltip } from "./ui/AnimatedTooltip";
@@ -9,8 +6,7 @@ import Link from "next/link";
 import { sendGAEvent } from "@next/third-parties/google";
 
 const ProjectCard = React.memo(({ project }: { project: Project }) => {
-  const {  title, subTitle, duration, description, img, stack, links } =
-    project;
+  const { title, subTitle, duration, description, img, stack, links } = project;
   return (
     <div data-aos="zoom-out-up">
       <div className=" w-full relative max-w-sm">
@@ -47,7 +43,12 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
           <p className="font-normal text-base text-slate-400 mb-4 relative z-50">
             {description && description}
           </p>
-
+          {project.role && <div className=" flex flex-row space-x-3">
+            <p className="font-semibold text-slate-500">Role: </p>
+            <p className="font-normal text-base text-slate-400">
+              {project.role}
+            </p>
+          </div>}
           <div className="flex flex-wrap  w-full  justify-between mt-4 gap-5 z-50">
             <div className="flex">
               <AnimatedTooltip items={stack} />
@@ -95,12 +96,6 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
 ProjectCard.displayName = "ProjectCard";
 
 const Project = ({ data }: { data: Project[] }) => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-    });
-  }, []);
-
   return (
     <div className="relative pt-2 pb-5" id="projects">
       <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">

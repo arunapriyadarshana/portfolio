@@ -29,9 +29,9 @@ const Footer = ({ social }: { social: Social[] }) => {
             </Link>
             <div className="flex items-center justify-center md:justify-start md:gap-3 gap-6">
               {social &&
-                social.map(({ id, icon, link, name }) => (
+                social.map(({ $id, icon, link, name }) => (
                   <Link
-                    key={id}
+                    key={$id}
                     href={link}
                     passHref={true}
                     target="_blank"

@@ -1,9 +1,11 @@
-"use client";
 import { Button } from "./MovingBorder";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import profileImg from "../../public/myImg.webp";
-const ProfilePhoto = () => {
+const ProfilePhoto = ({
+  profileImg,
+}: {
+  profileImg: string;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
@@ -15,8 +17,12 @@ const ProfilePhoto = () => {
           src={profileImg}
           alt="Aruna Priyadarshana"
           width={300}
-          height={324}
-          className="drop-shadow-primary"
+          height={0}
+          className="drop-shadow-primary "
+          style={{
+            width: "auto",
+            height:"auto",
+          }}
           loading="eager"
           priority
         />

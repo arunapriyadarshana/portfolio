@@ -13,6 +13,7 @@ declare interface Project {
   links?: Link[];
   img: string;
   stack: Technology[];
+  role: string;
 }
 
 declare interface Education {
@@ -25,7 +26,7 @@ declare interface Education {
 }
 
 declare interface Social {
-  id: string;
+  $id: string;
   name: string;
   link: string;
   icon: string;
