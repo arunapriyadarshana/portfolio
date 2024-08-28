@@ -75,13 +75,7 @@ const Hero = ({
 
   const handleClick = () => {
     sendGAEvent("event", "download-cv", { value: "cv" });
-    fetch(cvUrl, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/pdf",
-      },
-      mode: "no-cors",
-    })
+    fetch(cvUrl)
       .then((response) => response.blob())
       .then((blob) => {
         const blobUrl = URL.createObjectURL(blob);
