@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210, 100%, 99%; /* hsl(210, 100%, 99%)*/
     --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 240 5.9% 10%;
+    --primary: 69, 73%, 38%; /*  hsl(69, 73%, 38%) */
     --primary-foreground: 0 0% 98%;
 
     --secondary: 240 4.8% 95.9%;
@@ -36,7 +36,7 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 69, 78%, 4%;
     --foreground: 0 0% 98%;
 
     --card: 240 10% 3.9%;
@@ -45,7 +45,7 @@
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 0 0% 98%;
+    --primary: 69, 74%, 53%; /*  hsl(69, 74%, 53%) */
     --primary-foreground: 240 5.9% 10%;
 
     --secondary: 240 3.7% 15.9%;
