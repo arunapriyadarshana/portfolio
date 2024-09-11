@@ -144,7 +144,7 @@ const NavItem = ({
       <p
         className={`${
           isActive
-            ? "text-primary border-b-2 border-primary lg:hover:border-primary transition-all duration-200"
+            ? "text-primary border-b-2 cool-link transition-all duration-200"
             : "text-gray-500"
         } text-sm lg:text-lg font-semibold cursor-pointer`}
       >

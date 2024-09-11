@@ -99,6 +99,19 @@
     /* background: #1e2238; */
     background: transparent;
   }
+
+  .cool-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: hsl(var(--primary));
+    transition: width 0.3s ease;
+  }
+
+  .cool-link:hover::after {
+    width: 100%;
+  }
 }
 
 @layer utilities {
