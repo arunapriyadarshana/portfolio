@@ -17,6 +17,10 @@ const menuItems = [
     href: "/about",
   },
   {
+    name: "Technologies",
+    href: "/technologies",
+  },
+  {
     name: "Projects",
     href: "/projects",
   },

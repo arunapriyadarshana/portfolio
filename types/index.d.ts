@@ -1,7 +1,19 @@
+export enum TechCategory {
+  Frontend = "frontend",
+  Backend = "backend",
+  Database = "database",
+  Programming = "programming",
+  Cloud = "cloud",
+  Tool = "tool",
+  None = "none",
+}
+
 declare interface Technology {
-  $id: string;
+  id: string;
   name: string;
-  img: string;
+  icon: string;
+  order: number;
+  category: TechCategory;
 }
 
 declare interface Project {
