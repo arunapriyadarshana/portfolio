@@ -1,7 +1,11 @@
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 import { ProjectService } from "@/services/project.service";
-import { TechnologyService } from "@/services/technology.service";
-import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Aruna Priyadarshana's Projects",
+};
 
 const page = async () => {
   const data = await ProjectService.getProjects();

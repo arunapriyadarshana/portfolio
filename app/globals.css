@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 69, 73%, 38%; /*  hsl(69, 73%, 38%) */
+    --primary: 138, 94%, 14%; /*  hsl(138, 94%, 14%)*/
     --primary-foreground: 0 0% 98%;
 
     --secondary: 240 4.8% 95.9%;
@@ -36,7 +36,7 @@
   }
 
   .dark {
-    --background: 69, 78%, 4%;
+    --background: 240, 4%, 16%; /* hsl(240, 4%, 16%) */
     --foreground: 0 0% 98%;
 
     --card: 240 10% 3.9%;

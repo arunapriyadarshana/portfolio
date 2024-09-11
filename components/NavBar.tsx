@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
@@ -31,18 +31,13 @@ const menuItems = [
 ];
 
 const NavBar = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const menuRef = useRef<HTMLDivElement>(null); // Reference for the menu container
-  const pathname = usePathname(); // To detect path changes
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
-    setMounted(true);
-
-    // Close the menu when the path changes
     setMenuOpen(false);
-  }, [pathname]); // This effect will run every time the pathname changes
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -50,20 +45,23 @@ const NavBar = () => {
         setMenuOpen(false); // Close the menu when clicking outside
       }
     };
+
+    const handleScroll = () => {
+      setMenuOpen(false); // Close the menu when scrolling
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
 
     // Cleanup event listener on unmount
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const handleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
   };
 
   return (
@@ -77,48 +75,32 @@ const NavBar = () => {
             <NavItem key={item.name} item={item} />
           ))}
         </div>
+        <ThemeButton />
 
         <div className="flex flex-row items-center justify-between gap-3">
-          <button
-            className={`relative flex justify-between items-center mx-auto rounded-full border-2 cursor-pointer overflow-hidden ${
-              theme === "light"
-                ? "border-gray-400 bg-gradient-to-r from-blue-500 to-blue-300 text-gray-800"
-                : "border-white bg-gradient-to-r from-gray-900 to-gray-700 bg-gray-800 text-gray-200"
-            }`}
-            onClick={handleTheme}
-          >
-            {mounted &&
-              (theme === "light" ? (
-                <Image
-                  src="/sun.png"
-                  alt="Sun"
-                  width={10}
-                  height={10}
-                  className="w-6 md:w-8 h-auto"
-                />
-              ) : (
-                <Image
-                  src="/moon.png"
-                  alt="Moon"
-                  width={10}
-                  height={10}
-                  className="w-6 md:w-8 h-auto"
-                />
-              ))}
-          </button>
           <Bars3Icon
-            className="lg:hidden w-8 h-8 text-gray-500"
-            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden w-8 h-8 z-50 text-gray-500 cursor-pointer"
+            onClick={toggleMenu}
           />
 
           <div
             ref={menuRef}
-            className={`px-7 right-3 absolute top-12 lg:hidden flex flex-col items-center bg-[#F5F7F8] dark:bg-[#303233] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 py-4 transition-all duration-300 ease-in-out ${
+            className={`px-3 right-0 h-[50%] w-full z-50 absolute top-0 lg:hidden flex flex-col items-center  rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 py-4 transition-all duration-300 ease-in-out ${
               menuOpen
                 ? "max-h-screen opacity-100"
                 : "max-h-0 overflow-hidden opacity-0"
             }`}
           >
+            <div className="flex justify-end w-full">
+              <div className="flex flex-row items-center gap-5">
+                <ThemeButton />
+                <Bars3Icon
+                  className="lg:hidden w-8 h-8 z-50 text-gray-500 cursor-pointer"
+                  onClick={toggleMenu}
+                />
+              </div>
+            </div>
+
             {menuItems.map((item) => (
               <NavItem key={item.name} item={item} />
             ))}
@@ -149,11 +131,53 @@ const NavItem = ({
         className={`${
           isActive
             ? "text-primary border-b-2 cool-link transition-all duration-200"
-            : "text-gray-500"
+            : "text-gray-500 dark:text-zinc-100"
         } text-sm lg:text-lg font-semibold cursor-pointer`}
       >
         {item.name}
       </p>
     </Link>
+  );
+};
+
+export const ThemeButton = () => {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  const handleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  return (
+    <button
+      className={`relative flex justify-between items-center mx-auto h-fit rounded-full border-2 cursor-pointer overflow-hidden ${
+        theme === "light"
+          ? "border-gray-400 bg-gradient-to-r from-blue-500 to-blue-300 text-gray-800"
+          : "border-white bg-gradient-to-r from-gray-900 to-gray-700 bg-gray-800 text-gray-200"
+      }`}
+      onClick={handleTheme}
+    >
+      {mounted &&
+        (theme === "light" ? (
+          <Image
+            src="/sun.png"
+            alt="Sun"
+            width={10}
+            height={10}
+            className="w-6 md:w-8 h-auto"
+          />
+        ) : (
+          <Image
+            src="/moon.png"
+            alt="Moon"
+            width={10}
+            height={10}
+            className="w-6 md:w-8 h-auto"
+          />
+        ))}
+    </button>
   );
 };

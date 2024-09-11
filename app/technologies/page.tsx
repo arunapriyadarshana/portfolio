@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { TechnologyService } from "@/services/technology.service";
 import { Technology } from "@/types";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Technologies",
+  description: "Technologies",
+};
 
 const page = async () => {
   const data = await TechnologyService.getTechnologies();

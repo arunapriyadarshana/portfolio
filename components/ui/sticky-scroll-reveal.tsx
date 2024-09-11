@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { Project } from "@/types"; // Assuming the type 'Project' is defined in a file named 'types.ts' in the '@/types' directory.
+import Button from "./Button";
 
 export const StickyScroll = ({
   content,
@@ -14,6 +15,7 @@ export const StickyScroll = ({
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
+  // const [selectedId, setSelectedId] = useState<string | null>(null);
   const ref = useRef<any>(null);
   const { scrollYProgress } = useScroll({
     // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
@@ -38,68 +40,79 @@ export const StickyScroll = ({
     setActiveCard(closestBreakpointIndex);
   });
 
-  const backgroundColors = [
-    "var(--slate-900)",
-    "var(--black)",
-    "var(--neutral-900)",
-  ];
-  const linearGradients = [
-    "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
-    "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
-    "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
-  ];
-
-  const [backgroundGradient, setBackgroundGradient] = useState(
-    linearGradients[0]
-  );
-
-  useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
-
   return (
     <motion.div
-      animate={{
-        backgroundColor: backgroundColors[activeCard % backgroundColors.length],
-      }}
-      className="h-[30rem] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10"
+      className="h-[30rem] !z-0 overflow-y-auto flex justify-center relative space-x-10 rounded-md p-5 md:p-10"
       ref={ref}
     >
-      <div className="div relative flex items-start px-4">
+      <div className="div relative flex items-start px-3 md:px-10">
         <div className="max-w-2xl">
           {content.map((item: Project, index) => (
-            <div key={item.title + index} className="my-20">
-              <motion.h2
+            <div key={item.title + index} className="my-10 md:my-20">
+              <motion.div
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: activeCard === index ? 1 : 0.5,
+                }}
+                className="text-2xl font-bold dark:text-slate-100 text-slate-900"
+              >
+                <div className="flex flex-col">
+                  <p className="text-primary"> {item.title}</p>
+                  <p className="font-normal text-sm">{item.subtitle}</p>
+                </div>
+              </motion.div>
+              <motion.div
                 initial={{
                   opacity: 0,
                 }}
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-2xl font-bold text-slate-100"
+                className="text-kg text-slate-600 dark:text-slate-300 md:min-h-24 max-w-sm mt-10"
               >
-                {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-kg text-slate-300 min-h-24 max-w-sm mt-10"
-              >
-                {item.description}
-              </motion.p>
+                <div>
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    width={350}
+                    height={250}
+                    className="rounded-sm block md:hidden"
+                    loading="eager"
+                    priority
+                  />
+
+                  <div className="flex md:hidden w-full justify-end py-2">
+                    <Button
+                      title="View"
+                      hadleClick={() => {
+                       
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="hidden md:flex flex-col  ">
+                  <p>{item.description}</p>
+
+                  {item.role && (
+                    <div className="flex flex-row my-2">
+                      <p className="font-semibold text-slate-500">Role: </p>
+                      <p className="font-normal text-base text-slate-400">
+                        {item.role}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
             </div>
           ))}
-          <div className="h-40" />
+          <div className="hidden md:block h-52" />
         </div>
       </div>
       <div
-        style={{ background: backgroundGradient }}
         className={cn(
-          "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
+          "hidden md:block h-full w-96 z-0 rounded-md sticky top-10 overflow-hidden",
           contentClassName
         )}
       >
@@ -109,14 +122,46 @@ export const StickyScroll = ({
             alt={content[activeCard].title}
             width={350}
             height={250}
-            className="rounded-sm"
+            className="rounded-sm w-full h-auto max-h-[70%]"
             loading="eager"
             priority
           />
         )}
-
-        {/* {content[activeCard].content ?? null} */}
+        <div className="hidden md:flex flex-wrap gap-2 my-5">
+          {content[activeCard].techStack &&
+            content[activeCard].techStack.map((tech) => (
+              <p
+                key={tech.techId}
+                className={`text-[1rem] dark:text-slate-900 text-slate-50 bg-primary px-3 py-1 rounded-full`}
+              >
+                {tech.tech.name}
+              </p>
+            ))}
+        </div>
       </div>
+      {/* <AnimateCard selectedId={selectedId} setSelectedId={setSelectedId} /> */}
     </motion.div>
+  );
+};
+
+const AnimateCard = ({
+  selectedId,
+  setSelectedId,
+}: {
+  selectedId: string | null;
+  setSelectedId: (id: string | null) => void;
+}) => {
+  return (
+    <div>
+      <AnimatePresence>
+        {selectedId && (
+          <motion.div layoutId={selectedId}>
+            <motion.h5>{"test"}</motion.h5>
+            <motion.h2>{"test"}</motion.h2>
+            <motion.button onClick={() => setSelectedId(null)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
