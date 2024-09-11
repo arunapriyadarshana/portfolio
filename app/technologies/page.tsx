@@ -1,6 +1,6 @@
 import { TechnologyService } from "@/services/technology.service";
 import { Technology } from "@/types";
-import React from "react";
+import Image from "next/image";
 
 const page = async () => {
   const data = await TechnologyService.getTechnologies();
@@ -11,12 +11,20 @@ const page = async () => {
   return (
     <div>
       Technologies
-      <ul>
+      <div className="w-full flex flex-wrap gap-5">
         {technologies &&
-          technologies.map((tech: Technology) => (
-            <li key={tech.id}>{tech.name}</li>
+          technologies.map((technologie: Technology) => (
+            <div className="flex gap-5 flex-row">
+              <Image
+                src={technologie.icon}
+                alt={technologie.name}
+                width={30}
+                height={20}
+              />
+              {technologie.name}
+            </div>
           ))}
-      </ul>
+      </div>
     </div>
   );
 };
