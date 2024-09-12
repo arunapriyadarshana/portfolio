@@ -20,7 +20,7 @@ const page = async () => {
       <div className="w-full flex flex-wrap gap-5">
         {technologies &&
           technologies.map((technologie: Technology) => (
-            <div className="flex gap-5 flex-row">
+            <div className="flex gap-5 flex-row" key={technologie.id}>
               <Image
                 src={technologie.icon}
                 alt={technologie.name}
