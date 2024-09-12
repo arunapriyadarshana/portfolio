@@ -42,7 +42,7 @@ export const StickyScroll = ({
 
   return (
     <motion.div
-      className="h-[30rem] !z-0 overflow-y-auto flex justify-center relative space-x-10 rounded-md p-5 md:p-10"
+      className="h-[30rem] !z-0 overflow-y-auto flex justify-center relative space-x-10 rounded-md p-5 md:p-10 scrollbar-custom"
       ref={ref}
     >
       <div className="div relative flex items-start px-3 md:px-10">
@@ -84,12 +84,7 @@ export const StickyScroll = ({
                   />
 
                   <div className="flex md:hidden w-full justify-end py-2">
-                    <Button
-                      title="View"
-                      hadleClick={() => {
-                       
-                      }}
-                    />
+                    <Button title="View" hadleClick={() => {}} />
                   </div>
                 </div>
                 <div className="hidden md:flex flex-col  ">
@@ -132,7 +127,7 @@ export const StickyScroll = ({
             content[activeCard].techStack.map((tech) => (
               <p
                 key={tech.techId}
-                className={`text-[1rem] dark:text-slate-900 text-slate-50 bg-primary px-3 py-1 rounded-full`}
+                className={`text-[1rem] text-slate-900 bg-primary px-3 py-1 rounded-full`}
               >
                 {tech.tech.name}
               </p>

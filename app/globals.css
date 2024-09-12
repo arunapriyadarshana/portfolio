@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 138, 94%, 14%; /*  hsl(138, 94%, 14%)*/
+    --primary: 46, 100%, 49%; /*  hsl(46, 100%, 49%)*/
     --primary-foreground: 0 0% 98%;
 
     --secondary: 240 4.8% 95.9%;
@@ -80,13 +80,23 @@
 
 @layer base {
   /* Remove scrollbar */
-  .remove-scrollbar::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-    border-radius: 0px;
+  .scrollbar-custom::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    background: hsl(var(--background));
+    -webkit-border-radius: 10px;
   }
 
-  .remove-scrollbar::-webkit-scrollbar-track {
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    -webkit-border-radius: 1ex;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+
+  /* .remove-scrollbar::-webkit-scrollbar-track {
     background: transparent;
   }
 
@@ -96,9 +106,9 @@
   }
 
   .remove-scrollbar::-webkit-scrollbar-thumb:hover {
-    /* background: #1e2238; */
+    background: #1e2238; 
     background: transparent;
-  }
+  } */
 
   .cool-link::after {
     content: "";
