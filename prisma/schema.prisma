@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Technologies {
+  id        String             @id @default(uuid())
+  name      String
+  icon      String
+  category  TechCategory       @default(none)
+  isVisible Boolean            @default(true)
+  order     Int                @default(5000)
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  projects  ProjectTechStack[]
+}
+
+model About {
+  id        String   @id @default(uuid())
+  title     String
+  content   String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Projects {
+  id          String             @id @default(uuid())
+  title       String
+  subtitle    String?
+  duration    String
+  description String?
+  links       String[]
+  img         String
+  role        String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  techStack   ProjectTechStack[]
+}
+
+model ProjectTechStack {
+  projectId String
+  techId    String
+  project   Projects     @relation(fields: [projectId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  tech      Technologies @relation(fields: [techId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([projectId, techId])
+}
+
+model Contact {
+  id        String   @id @default(uuid())
+  name      String
+  icon      String
+  link      String
+  order     Int      @default(5000)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum TechCategory {
+  frontend
+  backend
+  database
+  programming
+  cloud
+  tool
+  none
+}

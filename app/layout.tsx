@@ -9,7 +9,10 @@ import NavBar from "@/components/NavBar";
 const inter = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Aruna Priyadarshana",
+  title: {
+    default: "Aruna Priyadarshana",
+    template: "%s | Aruna Priyadarshana",
+  },
   description: "Aruna Priyadarshana's Portfolio",
 };
 

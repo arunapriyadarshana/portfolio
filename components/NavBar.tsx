@@ -1,66 +1,126 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import Image from "next/image";
-import { useTheme } from "next-themes";
+import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { Bars3Icon } from "@heroicons/react/20/solid";
+
+import { motion, useCycle } from "framer-motion";
+import { useDimensions } from "./use-dimension";
+import { Navigation } from "./Navigation";
+import { MenuToggle } from "./MenuToggle";
+import { ThemeButton } from "./ThemeButton";
+import "./styles.css";
+import NavItem from "./NavItem";
+
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height + 100}px at calc(100% - 20px) 20px)`, // Move circle more to the right and top
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: "circle(20px at calc(100% - 26px) 26px)", // Smaller size and adjusted position in closed state
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
 
 const menuItems = [
   {
+    i: 1,
     name: "Home",
     href: "/",
   },
   {
+    i: 2,
     name: "About",
     href: "/about",
   },
   {
+    i: 3,
+    name: "Technologies",
+    href: "/technologies",
+  },
+  {
+    i: 4,
     name: "Projects",
     href: "/projects",
   },
   {
+    i: 5,
     name: "Contact",
     href: "/contact",
   },
 ];
 
+// function useMenuAnimation(isOpen: boolean) {
+//   const [scope, animate] = useAnimate();
+
+//   useEffect(() => {
+//     const menuAnimations = isOpen
+//       ? [
+//           [
+//             "nav",
+//             { transform: "translateX(0%)" },
+//             { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.6 },
+//           ],
+//           [
+//             "li",
+//             { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
+//             { delay: stagger(0.05), at: "-0.1" },
+//           ],
+//         ]
+//       : [
+//           [
+//             "li",
+//             { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
+//             { delay: stagger(0.05, { from: "last" }), at: "<" },
+//           ],
+//           ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
+//         ];
+
+//     animate([
+//       [
+//         "path.top",
+//         { d: isOpen ? "M 3 16.5 L 17 2.5" : "M 2 2.5 L 20 2.5" },
+//         { at: "<" },
+//       ],
+//       ["path.middle", { opacity: isOpen ? 0 : 1 }, { at: "<" }],
+//       [
+//         "path.bottom",
+//         { d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" },
+//         { at: "<" },
+//       ],
+//       ...menuAnimations,
+//     ]);
+//   }, [isOpen]);
+
+//   return scope;
+// }
+
 const NavBar = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const menuRef = useRef<HTMLDivElement>(null); // Reference for the menu container
-  const pathname = usePathname(); // To detect path changes
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  // const [isOpen, setIsOpen] = useState(false);
+
+  //   const scope = useMenuAnimation(menuOpen);
+
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
 
   useEffect(() => {
-    setMounted(true);
-
-    // Close the menu when the path changes
     setMenuOpen(false);
-  }, [pathname]); // This effect will run every time the pathname changes
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMenuOpen(false); // Close the menu when clicking outside
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup event listener on unmount
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const handleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  };
+    toggleOpen();
+  }, [pathname]);
 
   return (
     <div className="flex justify-between items-center w-full py-4">
@@ -73,52 +133,61 @@ const NavBar = () => {
             <NavItem key={item.name} item={item} />
           ))}
         </div>
+        <div className="hidden md:flex">
+          <ThemeButton />
+        </div>
 
         <div className="flex flex-row items-center justify-between gap-3">
-          <button
-            className={`relative flex justify-between items-center mx-auto rounded-full border-2 cursor-pointer overflow-hidden ${
-              theme === "light"
-                ? "border-gray-400 bg-gradient-to-r from-blue-500 to-blue-300 text-gray-800"
-                : "border-white bg-gradient-to-r from-gray-900 to-gray-700 bg-gray-800 text-gray-200"
-            }`}
-            onClick={handleTheme}
-          >
-            {mounted &&
-              (theme === "light" ? (
-                <Image
-                  src="/sun.png"
-                  alt="Sun"
-                  width={10}
-                  height={10}
-                  className="w-6 md:w-8 h-auto"
-                />
-              ) : (
-                <Image
-                  src="/moon.png"
-                  alt="Moon"
-                  width={10}
-                  height={10}
-                  className="w-6 md:w-8 h-auto"
-                />
-              ))}
-          </button>
-          <Bars3Icon
-            className="lg:hidden w-8 h-8 text-gray-500"
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
+          {/* <Bars3Icon
+            className="lg:hidden w-8 h-8 z-50 text-gray-500 cursor-pointer"
+            onClick={toggleMenu}
+          /> */}
 
-          <div
-            ref={menuRef}
-            className={`px-7 right-3 absolute top-12 lg:hidden flex flex-col items-center bg-[#F5F7F8] dark:bg-[#303233] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 py-4 transition-all duration-300 ease-in-out ${
+          {/* <div
+            ref={scope}
+            className={`px-3 right-0 h-[50%] w-full z-50 absolute top-0 lg:hidden flex flex-col items-center  rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 py-4 transition-all duration-300 ease-in-out ${
               menuOpen
                 ? "max-h-screen opacity-100"
                 : "max-h-0 overflow-hidden opacity-0"
             }`}
+          > */}
+          {/* <div
+            ref={scope}
+            className="fixed top-0 left-0 bottom-0 w-[400px] pt-[100px] bg-green-500 will-change-transform translate-x-[100%] flex md:hidden"
           >
+            <div className="flex justify-end w-full">
+              <div className="flex flex-row items-center gap-5">
+                <ThemeButton />
+                <Bars3Icon
+                  className="lg:hidden w-8 h-8 z-50 text-gray-500 cursor-pointer"
+                  onClick={toggleMenu}
+                />
+              </div>
+            </div>
+
             {menuItems.map((item) => (
               <NavItem key={item.name} item={item} />
             ))}
-          </div>
+          </div> */}
+
+          {
+            <motion.nav
+              initial={false}
+              animate={isOpen ? "open" : "closed"}
+              custom={height}
+              ref={containerRef}
+              className={`absolute top-0 right-0 bottom-0 
+               w-[300px] block md:hidden
+              `}
+            >
+              <motion.div
+                className="absolute top-0 left-0 bottom-0 w-[300px] dark:bg-gray-700 bg-zinc-900 z-20  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50 dark:bg-opacity-50"
+                variants={sidebar}
+              />
+              <Navigation item={menuItems} />
+              <MenuToggle toggle={() => toggleOpen()} />
+            </motion.nav>
+          }
         </div>
       </div>
     </div>
@@ -126,30 +195,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-const NavItem = ({
-  item,
-}: {
-  item: {
-    name: string;
-    href: string;
-  };
-}) => {
-  const pathname = usePathname();
-  const isActive =
-    item.href !== "/" ? pathname.startsWith(item.href) : pathname === item.href;
-
-  return (
-    <Link href={item.href} className="py-2">
-      <p
-        className={`${
-          isActive
-            ? "text-primary border-b-2 cool-link transition-all duration-200"
-            : "text-gray-500"
-        } text-sm lg:text-lg font-semibold cursor-pointer`}
-      >
-        {item.name}
-      </p>
-    </Link>
-  );
-};
