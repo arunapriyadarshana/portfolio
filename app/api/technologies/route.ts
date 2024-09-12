@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export enum TechCategory {
+enum TechCategory {
   Frontend = "frontend",
   Backend = "backend",
   Database = "database",
@@ -13,7 +13,7 @@ export enum TechCategory {
   None = "none",
 }
 
-export interface Technology {
+interface Technology {
   id: string; // UUID
   name: string; // Name of the technology
   icon: string; // Icon representing the technology
